@@ -14,10 +14,14 @@ public class FichaCadrada extends Ficha{
     
     //CONSTRUCTOR
     public FichaCadrada() {
-        Cadrado cadrado1 = new Cadrado(0,1,Color.RED);
+        Cadrado cadrado1 = new Cadrado(0,0,Color.RED);
         Cadrado cadrado2 = new Cadrado(1,1,Color.RED);
         Cadrado cadrado3 = new Cadrado(1,1,Color.RED);
         Cadrado cadrado4 = new Cadrado(1,1,Color.RED);
+        cadrados.add(cadrado1);
+        cadrados.add(cadrado2);
+        cadrados.add(cadrado3);
+        cadrados.add(cadrado4);
     }
     
     //METODOS
