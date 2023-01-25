@@ -20,11 +20,11 @@ public class Cadrado {
     public JLabel lblCadrado;
 
     //CONSTRUCTOR
-    public Cadrado(int x, int y, Color corRecheo, JLabel lblCadrado) {
+    public Cadrado(int x, int y, Color corRecheo) {
         this.x = x;
         this.y = y;
         this.corRecheo = corRecheo;
-        this.lblCadrado = lblCadrado;
+        this.lblCadrado = new JLabel();
     }
 
     //SETTERs AND GETTERs
@@ -59,10 +59,10 @@ public class Cadrado {
     public void setLblCadrado(JLabel lblCadrado) {
         this.lblCadrado = lblCadrado;
     }
-    
+
     //METODOS
-    public String getCoordenadas(){
+    public String getCoordenadas() {
         return "coordenadas";
     }
-    
-}   
+
+}
