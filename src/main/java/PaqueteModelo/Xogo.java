@@ -52,8 +52,8 @@ public class Xogo {
 
     }
 
-    public void ePosicionValida(int x, int y) {
-
+    public boolean ePosicionValida(int x, int y) {
+        return false;
     }
 
     public void xenerarNovaFicha() {
