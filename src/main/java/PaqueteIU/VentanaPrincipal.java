@@ -10,10 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
-/**
- *
- * @author matut
- */
+
 public class VentanaPrincipal {
 
     //ATRIBUTOS
