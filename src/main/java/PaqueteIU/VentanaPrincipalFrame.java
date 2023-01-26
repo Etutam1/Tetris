@@ -26,12 +26,174 @@ public class VentanaPrincipalFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        levels = new javax.swing.JFrame();
+        jLabel2 = new javax.swing.JLabel();
+        easyButton = new javax.swing.JButton();
+        hardButton = new javax.swing.JButton();
+        normalButton = new javax.swing.JButton();
+        frameJuego = new javax.swing.JFrame();
+        panelJuego = new javax.swing.JPanel();
+        scoreLabel = new javax.swing.JLabel();
+        score = new javax.swing.JLabel();
+        levelLabel = new javax.swing.JLabel();
+        level = new javax.swing.JLabel();
+        pauseButton = new javax.swing.JToggleButton();
         exitButton = new javax.swing.JButton();
         playButton = new javax.swing.JButton();
         settingsButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
+
+        jLabel2.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel2.setText("SELECT DIFFICULTY");
+
+        easyButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        easyButton.setText("EASY");
+        easyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                easyButtonActionPerformed(evt);
+            }
+        });
+
+        hardButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        hardButton.setText("HARD");
+        hardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hardButtonActionPerformed(evt);
+            }
+        });
+
+        normalButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        normalButton.setText("NORMAL");
+        normalButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                normalButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout levelsLayout = new javax.swing.GroupLayout(levels.getContentPane());
+        levels.getContentPane().setLayout(levelsLayout);
+        levelsLayout.setHorizontalGroup(
+            levelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(levelsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, levelsLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(levelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(hardButton)
+                    .addComponent(easyButton)
+                    .addComponent(normalButton))
+                .addGap(67, 67, 67))
+        );
+
+        levelsLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {easyButton, hardButton, normalButton});
+
+        levelsLayout.setVerticalGroup(
+            levelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(levelsLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(easyButton)
+                .addGap(18, 18, 18)
+                .addComponent(normalButton)
+                .addGap(18, 18, 18)
+                .addComponent(hardButton)
+                .addContainerGap(52, Short.MAX_VALUE))
+        );
+
+        levelsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {easyButton, hardButton, normalButton});
+
+        frameJuego.setBackground(new java.awt.Color(204, 204, 204));
+        frameJuego.setForeground(java.awt.Color.gray);
+        frameJuego.setResizable(false);
+
+        panelJuego.setBackground(new java.awt.Color(0, 0, 0));
+        panelJuego.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout panelJuegoLayout = new javax.swing.GroupLayout(panelJuego);
+        panelJuego.setLayout(panelJuegoLayout);
+        panelJuegoLayout.setHorizontalGroup(
+            panelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 398, Short.MAX_VALUE)
+        );
+        panelJuegoLayout.setVerticalGroup(
+            panelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 798, Short.MAX_VALUE)
+        );
+
+        scoreLabel.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
+        scoreLabel.setText("Score:");
+
+        score.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
+        score.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        score.setText("0");
+
+        levelLabel.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
+        levelLabel.setText("Level:");
+
+        level.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
+        level.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        level.setText("1");
+
+        pauseButton.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
+        pauseButton.setText("PAUSE");
+        pauseButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pauseButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout frameJuegoLayout = new javax.swing.GroupLayout(frameJuego.getContentPane());
+        frameJuego.getContentPane().setLayout(frameJuegoLayout);
+        frameJuegoLayout.setHorizontalGroup(
+            frameJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frameJuegoLayout.createSequentialGroup()
+                .addGroup(frameJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(frameJuegoLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(scoreLabel))
+                    .addGroup(frameJuegoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(score, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(frameJuegoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(frameJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(levelLabel)
+                            .addGroup(frameJuegoLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(level, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(frameJuegoLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(pauseButton)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+        );
+        frameJuegoLayout.setVerticalGroup(
+            frameJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frameJuegoLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(scoreLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(score, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(levelLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(level, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pauseButton)
+                .addGap(158, 158, 158))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frameJuegoLayout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        frameJuegoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {level, score});
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tetis");
@@ -131,11 +293,14 @@ public class VentanaPrincipalFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
-        
+        this.setVisible(false);
+        frameJuego.setVisible(rootPaneCheckingEnabled);
+        frameJuego.setSize(660, 830);
     }//GEN-LAST:event_playButtonActionPerformed
 
     private void settingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButtonActionPerformed
-        // TODO add your handling code here:
+        levels.setVisible(rootPaneCheckingEnabled);
+        levels.setSize(280, 300);
     }//GEN-LAST:event_settingsButtonActionPerformed
 
     private void playButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButtonMouseEntered
@@ -145,6 +310,22 @@ public class VentanaPrincipalFrame extends javax.swing.JFrame {
     private void exitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonMouseClicked
         this.dispose();
     }//GEN-LAST:event_exitButtonMouseClicked
+
+    private void easyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_easyButtonActionPerformed
+
+    private void hardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hardButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hardButtonActionPerformed
+
+    private void normalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_normalButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_normalButtonActionPerformed
+
+    private void pauseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pauseButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pauseButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,11 +363,23 @@ public class VentanaPrincipalFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton easyButton;
     private javax.swing.JButton exitButton;
+    private javax.swing.JFrame frameJuego;
+    private javax.swing.JButton hardButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel level;
+    private javax.swing.JLabel levelLabel;
+    private javax.swing.JFrame levels;
+    private javax.swing.JButton normalButton;
+    private javax.swing.JPanel panelJuego;
+    private javax.swing.JToggleButton pauseButton;
     private javax.swing.JButton playButton;
+    private javax.swing.JLabel score;
+    private javax.swing.JLabel scoreLabel;
     private javax.swing.JButton settingsButton;
     // End of variables declaration//GEN-END:variables
 }
