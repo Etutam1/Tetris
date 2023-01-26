@@ -38,6 +38,7 @@ public class VentanaPrincipalFrame extends javax.swing.JFrame {
         levelLabel = new javax.swing.JLabel();
         level = new javax.swing.JLabel();
         pauseButton = new javax.swing.JToggleButton();
+        Cuadrado = new javax.swing.JLabel();
         exitButton = new javax.swing.JButton();
         playButton = new javax.swing.JButton();
         settingsButton = new javax.swing.JButton();
@@ -107,23 +108,15 @@ public class VentanaPrincipalFrame extends javax.swing.JFrame {
 
         levelsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {easyButton, hardButton, normalButton});
 
+        frameJuego.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        frameJuego.setTitle("Tetis");
         frameJuego.setBackground(new java.awt.Color(204, 204, 204));
         frameJuego.setForeground(java.awt.Color.gray);
         frameJuego.setResizable(false);
 
         panelJuego.setBackground(new java.awt.Color(0, 0, 0));
         panelJuego.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout panelJuegoLayout = new javax.swing.GroupLayout(panelJuego);
-        panelJuego.setLayout(panelJuegoLayout);
-        panelJuegoLayout.setHorizontalGroup(
-            panelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 398, Short.MAX_VALUE)
-        );
-        panelJuegoLayout.setVerticalGroup(
-            panelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 798, Short.MAX_VALUE)
-        );
+        panelJuego.setLayout(new java.awt.GridLayout(20, 10));
 
         scoreLabel.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
         scoreLabel.setText("Score:");
@@ -147,6 +140,14 @@ public class VentanaPrincipalFrame extends javax.swing.JFrame {
             }
         });
 
+        Cuadrado.setBackground(new java.awt.Color(204, 0, 0));
+        Cuadrado.setForeground(new java.awt.Color(204, 0, 0));
+        Cuadrado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Cuadrado.setMaximumSize(new java.awt.Dimension(40, 40));
+        Cuadrado.setMinimumSize(new java.awt.Dimension(40, 40));
+        Cuadrado.setOpaque(true);
+        Cuadrado.setPreferredSize(new java.awt.Dimension(40, 40));
+
         javax.swing.GroupLayout frameJuegoLayout = new javax.swing.GroupLayout(frameJuego.getContentPane());
         frameJuego.getContentPane().setLayout(frameJuegoLayout);
         frameJuegoLayout.setHorizontalGroup(
@@ -168,29 +169,34 @@ public class VentanaPrincipalFrame extends javax.swing.JFrame {
                                 .addComponent(level, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(frameJuegoLayout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addComponent(pauseButton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                        .addGroup(frameJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Cuadrado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pauseButton))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         frameJuegoLayout.setVerticalGroup(
             frameJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(frameJuegoLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(scoreLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(score, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(levelLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(level, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(pauseButton)
-                .addGap(158, 158, 158))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frameJuegoLayout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(frameJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frameJuegoLayout.createSequentialGroup()
+                        .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 799, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(frameJuegoLayout.createSequentialGroup()
+                        .addComponent(scoreLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(score, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(levelLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(level, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54)
+                        .addComponent(Cuadrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pauseButton)
+                        .addGap(158, 158, 158))))
         );
 
         frameJuegoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {level, score});
@@ -363,6 +369,7 @@ public class VentanaPrincipalFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Cuadrado;
     private javax.swing.JButton easyButton;
     private javax.swing.JButton exitButton;
     private javax.swing.JFrame frameJuego;
