@@ -24,10 +24,10 @@ public class Xogo {
     public ArrayList<Cadrado> cadradosChan;
 
     //CONSTRUCTOR
-    public Xogo(int LADO_CADRADO, int MAX_X, int MAX_Y, boolean pausa, int numeroLineas, VentanaPrincipal ventanaPrincipal, Ficha fichaActual, ArrayList<Cadrado> cadradosChan) {
-        this.LADO_CADRADO = LADO_CADRADO;
-        this.MAX_X = MAX_X;
-        this.MAX_Y = MAX_Y;
+    public Xogo(boolean pausa, int numeroLineas, VentanaPrincipal ventanaPrincipal, Ficha fichaActual, ArrayList<Cadrado> cadradosChan) {
+        this.LADO_CADRADO = 40;
+        this.MAX_X = 200;
+        this.MAX_Y = 400;
         this.pausa = pausa;
         this.numeroLineas = numeroLineas;
         this.ventanaPrincipal = ventanaPrincipal;
@@ -52,8 +52,8 @@ public class Xogo {
 
     }
 
-    public void ePosicionValida(int x, int y) {
-
+    public boolean ePosicionValida(int x, int y) {
+        return true;
     }
 
     public void xenerarNovaFicha() {
