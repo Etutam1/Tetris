@@ -7,6 +7,7 @@ package PaqueteModelo;
 import PaqueteIU.VentanaPrincipalFrame;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 
 /**
  *
@@ -24,7 +25,8 @@ public class Xogo {
     public Ficha fichaActual;
     public ArrayList<Cadrado> cadradosChan;
     private Iterator<Cadrado> iterator;
-
+    //private Ficha[] fichas = {new FichaCadrada(this), new FichaT(this), new FichaBarra(this), new FichaBarra( this)};
+    private Random random = new Random();
     //CONSTRUCTOR
     public Xogo(boolean pausa, int numeroLineas, VentanaPrincipalFrame ventanaPrincipal) {
                 this.LADO_CADRADO = 40;
@@ -33,12 +35,18 @@ public class Xogo {
                 this.pausa = pausa;
                 this.numeroLineas = numeroLineas;
                 this.ventanaPrincipal = ventanaPrincipal;
-                this.fichaActual = new FichaCadrada(this);
+                this.fichaActual = new FichaCadrada(this);  //crearFichaAleatoria(this);
         
         //moverFichaAbaixo();
     }
 
     //METODOS
+    /*public Ficha crearFichaAleatoria(Xogo xogo) {
+        int indiceAleatorio = random.nextInt(fichas.length);
+        fichaActual = fichas[0];
+        return fichaActual;
+    }*/
+    
     public void moverFichaDereita() {
 
     }
