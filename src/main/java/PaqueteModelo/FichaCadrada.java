@@ -15,7 +15,7 @@ public class FichaCadrada extends Ficha{
     
     //CONSTRUCTOR
     public FichaCadrada() {
-        Cadrado cadrado1 = new Cadrado(0,0,Color.RED);
+        Cadrado cadrado1 = new Cadrado(100,0,Color.RED);
         Cadrado cadrado2 = new Cadrado(cadrado1.getX()+xogo.LADO_CADRADO,cadrado1.getY(),Color.RED);
         Cadrado cadrado3 = new Cadrado(cadrado1.getX(),cadrado1.getY()+xogo.LADO_CADRADO,Color.RED);
         Cadrado cadrado4 = new Cadrado(cadrado3.getX()+xogo.LADO_CADRADO,cadrado2.getY()+xogo.LADO_CADRADO,Color.RED);
