@@ -17,9 +17,9 @@ public abstract class Ficha {
     public Xogo xogo;
 
     //CONSTRUCTOR
-    public Ficha() {
+    public Ficha(Xogo xogo) {
+        this.xogo=xogo;
     }
-    
 
     //SETTER AND GETTER
     public ArrayList<Cadrado> getCadrados() {
@@ -46,4 +46,8 @@ public abstract class Ficha {
     }
 
     public abstract boolean rotar();
-}
+
+    
+    }
+
+

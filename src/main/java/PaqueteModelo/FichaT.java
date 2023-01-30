@@ -11,13 +11,13 @@ package PaqueteModelo;
 public class FichaT extends Ficha {
 
     //CONSTRUCTOR
-    public FichaT() {
+    public FichaT(Xogo xogo) {    
+        super(xogo);
     }
 
     //METODOS
     @Override
     public boolean rotar() {
-       
         return false;
     }
 

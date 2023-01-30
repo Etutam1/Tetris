@@ -4,8 +4,9 @@
  */
 package PaqueteModelo;
 
-import PaqueteIU.VentanaPrincipal;
+import PaqueteIU.VentanaPrincipalFrame;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -19,20 +20,22 @@ public class Xogo {
     public final int MAX_Y;
     public boolean pausa;
     public int numeroLineas;
-    public VentanaPrincipal ventanaPrincipal;
+    public VentanaPrincipalFrame ventanaPrincipal;
     public Ficha fichaActual;
     public ArrayList<Cadrado> cadradosChan;
+    private Iterator<Cadrado> iterator;
 
     //CONSTRUCTOR
-    public Xogo(boolean pausa, int numeroLineas, VentanaPrincipal ventanaPrincipal, Ficha fichaActual, ArrayList<Cadrado> cadradosChan) {
-        this.LADO_CADRADO = 40;
-        this.MAX_X = 200;
-        this.MAX_Y = 400;
-        this.pausa = pausa;
-        this.numeroLineas = numeroLineas;
-        this.ventanaPrincipal = ventanaPrincipal;
-        this.fichaActual = fichaActual;
-        this.cadradosChan = cadradosChan;
+    public Xogo(boolean pausa, int numeroLineas, VentanaPrincipalFrame ventanaPrincipal) {
+                this.LADO_CADRADO = 40;
+                this.MAX_X = 400;
+                this.MAX_Y = 800;
+                this.pausa = pausa;
+                this.numeroLineas = numeroLineas;
+                this.ventanaPrincipal = ventanaPrincipal;
+                this.fichaActual = new FichaCadrada(this);
+        
+        //moverFichaAbaixo();
     }
 
     //METODOS
@@ -49,7 +52,17 @@ public class Xogo {
     }
 
     public void moverFichaAbaixo() {
-
+        /* while (fichaActual.cadrados.get(3).y < this.MAX_Y) {
+            for (int i = 0; i < fichaActual.cadrados.size(); i++) {
+                fichaActual.cadrados.get(i).y = fichaActual.cadrados.get(i).y + 1;
+            }
+            pintarFicha();
+            try{
+                Thread.sleep(2000);
+            } catch (InterruptedException e){
+                System.out.println(e);
+            }   
+        }*/
     }
 
     public boolean ePosicionValida(int x, int y) {
@@ -57,7 +70,8 @@ public class Xogo {
     }
 
     public void xenerarNovaFicha() {
-
+        
+         
     }
 
     public void engadirFichaAoChan() {
@@ -93,11 +107,11 @@ public class Xogo {
         this.numeroLineas = numeroLineas;
     }
 
-    public VentanaPrincipal getVentanaPrincipal() {
+    public VentanaPrincipalFrame getVentanaPrincipal() {
         return ventanaPrincipal;
     }
 
-    public void setVentanaPrincipal(VentanaPrincipal ventanaPrincipal) {
+    public void setVentanaPrincipal(VentanaPrincipalFrame ventanaPrincipal) {
         this.ventanaPrincipal = ventanaPrincipal;
     }
 

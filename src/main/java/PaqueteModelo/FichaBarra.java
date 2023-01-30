@@ -11,13 +11,13 @@ package PaqueteModelo;
 public class FichaBarra extends Ficha {
 
     //CONSTRUCTOR
-    public FichaBarra() {
+    public FichaBarra(Xogo xogo) {    
+        super(xogo);
     }
 
     //METODOS
     @Override
     public boolean rotar() {
-       
         return false;
     }
 
