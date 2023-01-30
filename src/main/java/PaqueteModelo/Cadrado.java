@@ -11,7 +11,7 @@ import javax.swing.JLabel;
  *
  * @author matut
  */
-public class Cadrado { 
+public class Cadrado extends JLabel{ 
 
     //ATRIBUTOS 
     public int x;

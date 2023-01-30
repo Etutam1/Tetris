@@ -4,7 +4,7 @@
  */
 package PaqueteModelo;
 
-import PaqueteIU.Frame;
+
 import java.awt.Color;
 
 /**
