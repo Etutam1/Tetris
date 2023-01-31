@@ -7,6 +7,7 @@ package PaqueteIU;
 import PaqueteModelo.Cadrado;
 import PaqueteModelo.Xogo;
 import java.util.Iterator;
+import javax.swing.JLabel;
 
 import javax.swing.JPanel;
 
@@ -15,7 +16,7 @@ import javax.swing.JPanel;
  * @author a22lucastf
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-    
+     public Xogo xogo;  
      private Iterator<Cadrado> iterator;
     /**
      * Creates new form VentanaPrincipalFrame
@@ -372,11 +373,31 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.setVisible(false);//ESCONDE EL FRAME DE LA VENTANA PRINCIPAL
         frameJuego.setVisible(rootPaneCheckingEnabled); // MUESTRA EL FRAME DEL JUEGO 
         frameJuego.setSize(660, 830); //MEDIDAS FRAME JUEGO
-        Xogo xogo = new Xogo(false, 0, this);
-        pintarCadrado(xogo);
+        xogo = new Xogo(false, 0, this);
+        
+        for (int i = 0; i < xogo.fichaActual.cadrados.size(); i++) {
+            pintarCadrado(xogo.fichaActual.cadrados.get(i).getLblCadrado());
+        }
+        
     }
 
-    public void pintarCadrado(Xogo xogo) {
+    public void pintarCadrado(JLabel lblCadrado) {
+        xogo.ventanaPrincipal.getPanelJuego().add(lblCadrado);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         /*iterator = xogo.fichaActual.cadrados.iterator();
         while (iterator.hasNext()) {
             xogo.fichaActual.cadrados.iterator().next().lblCadrado.setBackground(xogo.fichaActual.cadrados.iterator().next().getCorRecheo());
@@ -389,7 +410,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             xogo.ventanaPrincipal.getPanelJuego().add(xogo.fichaActual.cadrados.iterator().next().lblCadrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(xogo.fichaActual.cadrados.iterator().next().getX(), xogo.fichaActual.cadrados.iterator().next().getY(), -1, -1));
 
         }*/
-        for (int i = 0; i < xogo.fichaActual.cadrados.size(); i++) {
+        /*for (int i = 0; i < xogo.fichaActual.cadrados.size(); i++) {
         
             xogo.fichaActual.cadrados.get(i).lblCadrado.setBackground(xogo.fichaActual.cadrados.get(i).getCorRecheo());
             xogo.fichaActual.cadrados.get(i).lblCadrado.setForeground(new java.awt.Color(204, 0, 0));
@@ -399,7 +420,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             xogo.fichaActual.cadrados.get(i).lblCadrado.setOpaque(true);
             xogo.fichaActual.cadrados.get(i).lblCadrado.setPreferredSize(new java.awt.Dimension(xogo.LADO_CADRADO, xogo.LADO_CADRADO));
             xogo.ventanaPrincipal.getPanelJuego().add(xogo.fichaActual.cadrados.get(i).lblCadrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(xogo.fichaActual.cadrados.get(i).getX(), xogo.fichaActual.cadrados.get(i).getY(), -1, -1));
-        }
+        }*/
     }
 
     public void borrarCadrado() {

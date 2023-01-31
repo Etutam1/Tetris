@@ -4,7 +4,7 @@
  */
 package PaqueteModelo;
 
-import PaqueteIU.VentanaPrincipalFrame;
+import PaqueteIU.VentanaPrincipal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
@@ -16,27 +16,28 @@ import java.util.Random;
 public class Xogo {
 
     //ATRIBUTOS
-    public final int LADO_CADRADO;
+    public final static int LADO_CADRADO = 40;
     public final int MAX_X;
     public final int MAX_Y;
     public boolean pausa;
     public int numeroLineas;
-    public VentanaPrincipalFrame ventanaPrincipal;
+    public VentanaPrincipal ventanaPrincipal;
     public Ficha fichaActual;
     public ArrayList<Cadrado> cadradosChan;
     private Iterator<Cadrado> iterator;
     //private Ficha[] fichas = {new FichaCadrada(this), new FichaT(this), new FichaBarra(this), new FichaBarra( this)};
     private Random random = new Random();
+
     //CONSTRUCTOR
-    public Xogo(boolean pausa, int numeroLineas, VentanaPrincipalFrame ventanaPrincipal) {
-                this.LADO_CADRADO = 40;
-                this.MAX_X = 400;
-                this.MAX_Y = 800;
-                this.pausa = pausa;
-                this.numeroLineas = numeroLineas;
-                this.ventanaPrincipal = ventanaPrincipal;
-                this.fichaActual = new FichaCadrada(this);  //crearFichaAleatoria(this);
-        
+    public Xogo(boolean pausa, int numeroLineas, VentanaPrincipal ventanaPrincipal) {
+
+        this.MAX_X = 400;
+        this.MAX_Y = 800;
+        this.pausa = pausa;
+        this.numeroLineas = numeroLineas;
+        this.ventanaPrincipal = ventanaPrincipal;
+        this.fichaActual = new FichaCadrada(this);  //crearFichaAleatoria(this);
+
         //moverFichaAbaixo();
     }
 
@@ -46,7 +47,6 @@ public class Xogo {
         fichaActual = fichas[0];
         return fichaActual;
     }*/
-    
     public void moverFichaDereita() {
 
     }
@@ -78,8 +78,7 @@ public class Xogo {
     }
 
     public void xenerarNovaFicha() {
-        
-         
+
     }
 
     public void engadirFichaAoChan() {
@@ -115,11 +114,11 @@ public class Xogo {
         this.numeroLineas = numeroLineas;
     }
 
-    public VentanaPrincipalFrame getVentanaPrincipal() {
+    public VentanaPrincipal getVentanaPrincipal() {
         return ventanaPrincipal;
     }
 
-    public void setVentanaPrincipal(VentanaPrincipalFrame ventanaPrincipal) {
+    public void setVentanaPrincipal(VentanaPrincipal ventanaPrincipal) {
         this.ventanaPrincipal = ventanaPrincipal;
     }
 

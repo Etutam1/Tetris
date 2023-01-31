@@ -11,7 +11,7 @@ import javax.swing.JLabel;
  *
  * @author matut
  */
-public class Cadrado { 
+public class Cadrado {
 
     //ATRIBUTOS 
     public int x;
@@ -25,6 +25,13 @@ public class Cadrado {
         this.y = y;
         this.corRecheo = corRecheo;
         this.lblCadrado = new JLabel();
+        lblCadrado.setBackground(corRecheo);
+        lblCadrado.setForeground(new java.awt.Color(204, 0, 0));
+        lblCadrado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblCadrado.setMaximumSize(new java.awt.Dimension(Xogo.LADO_CADRADO, Xogo.LADO_CADRADO));
+        lblCadrado.setMinimumSize(new java.awt.Dimension(Xogo.LADO_CADRADO, Xogo.LADO_CADRADO));
+        lblCadrado.setOpaque(true);
+        lblCadrado.setPreferredSize(new java.awt.Dimension(Xogo.LADO_CADRADO, Xogo.LADO_CADRADO));
     }
 
     //SETTERs AND GETTERs

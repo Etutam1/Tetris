@@ -16,9 +16,13 @@ public class FichaCadrada extends Ficha {
     public FichaCadrada(Xogo xogo) {
         super(xogo);
         Cadrado cadrado1 = new Cadrado(150, 0, Color.RED);
+        xogo.ventanaPrincipal.pintarCadrado(cadrado1.lblCadrado);
         Cadrado cadrado2 = new Cadrado(cadrado1.getX() + xogo.LADO_CADRADO, cadrado1.getY(), Color.RED);
+        xogo.ventanaPrincipal.pintarCadrado(cadrado2.lblCadrado);
         Cadrado cadrado3 = new Cadrado(cadrado1.getX(), cadrado1.getY() + xogo.LADO_CADRADO, Color.RED);
+        xogo.ventanaPrincipal.pintarCadrado(cadrado3.lblCadrado);
         Cadrado cadrado4 = new Cadrado(cadrado3.getX() + xogo.LADO_CADRADO, cadrado2.getY() + xogo.LADO_CADRADO, Color.RED);
+        xogo.ventanaPrincipal.pintarCadrado(cadrado4.lblCadrado);
         cadrados.add(cadrado1);
         cadrados.add(cadrado2);
         cadrados.add(cadrado3);
