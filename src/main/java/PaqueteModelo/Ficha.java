@@ -48,8 +48,7 @@ public abstract class Ficha {
         
         while( iterator.hasNext()){
             Cadrado c = iterator.next();
-                c.lblCadrado.setLocation(0, c.lblCadrado.getY()+Xogo.LADO_CADRADO);
-         xogo.ventanaPrincipal.pintarCadrado(c.lblCadrado);
+                c.lblCadrado.setLocation(c.lblCadrado.getX(), c.lblCadrado.getY()+Xogo.LADO_CADRADO);     
         }
         
         return true;
