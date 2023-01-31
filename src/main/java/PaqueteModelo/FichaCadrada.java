@@ -27,7 +27,6 @@ public class FichaCadrada extends Ficha {
         cadrados.add(cadrado2);
         cadrados.add(cadrado3);
         cadrados.add(cadrado4);
-
     }
 
     //METODOS

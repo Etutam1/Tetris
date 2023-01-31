@@ -7,6 +7,8 @@ package PaqueteIU;
 import PaqueteModelo.Cadrado;
 import PaqueteModelo.Xogo;
 import java.util.Iterator;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.JLabel;
 
 import javax.swing.JPanel;
@@ -16,8 +18,12 @@ import javax.swing.JPanel;
  * @author a22lucastf
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-     public Xogo xogo;  
-     private Iterator<Cadrado> iterator;
+    
+    //ATRIBUTOS
+    private Timer timer;
+    public Xogo xogo;
+    private Iterator<Cadrado> iterator;
+
     /**
      * Creates new form VentanaPrincipalFrame
      */
@@ -370,57 +376,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void iniciarPartida() {
 
-        this.setVisible(false);//ESCONDE EL FRAME DE LA VENTANA PRINCIPAL
-        frameJuego.setVisible(rootPaneCheckingEnabled); // MUESTRA EL FRAME DEL JUEGO 
-        frameJuego.setSize(660, 830); //MEDIDAS FRAME JUEGO
+        this.setVisible(false);      //ESCONDE EL FRAME DE LA VENTANA PRINCIPAL
+        frameJuego.setVisible(rootPaneCheckingEnabled);   // MUESTRA EL FRAME DEL JUEGO 
+        frameJuego.setSize(660, 830);       //MEDIDAS FRAME JUEGO
         xogo = new Xogo(false, 0, this);
-        
-        //for (int i = 0; i < xogo.fichaActual.cadrados.size(); i++) {
-            
-        //}
-        
+        velocidadJuego();
     }
-
+    
+    
+    public void velocidadJuego(){
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask(){
+            @Override
+            public void run() {
+            xogo.getFichaActual().moverAbaixo();
+            }      
+        };
+        timer.schedule(task,1000 ,1000);     
+    }
+    
     public void pintarCadrado(JLabel lblCadrado) {
-        this.panelJuego.add(lblCadrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(lblCadrado.getX(), lblCadrado.getY(), -1, -1));
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        /*iterator = xogo.fichaActual.cadrados.iterator();
-        while (iterator.hasNext()) {
-            xogo.fichaActual.cadrados.iterator().next().lblCadrado.setBackground(xogo.fichaActual.cadrados.iterator().next().getCorRecheo());
-            xogo.fichaActual.cadrados.iterator().next().lblCadrado.setForeground(new java.awt.Color(204, 0, 0));
-            xogo.fichaActual.cadrados.iterator().next().lblCadrado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-            xogo.fichaActual.cadrados.iterator().next().lblCadrado.setMaximumSize(new java.awt.Dimension(40, 40));
-            xogo.fichaActual.cadrados.iterator().next().lblCadrado.setMinimumSize(new java.awt.Dimension(40, 40));
-            xogo.fichaActual.cadrados.iterator().next().lblCadrado.setOpaque(true);
-            xogo.fichaActual.cadrados.iterator().next().lblCadrado.setPreferredSize(new java.awt.Dimension(40, 40));
-            xogo.ventanaPrincipal.getPanelJuego().add(xogo.fichaActual.cadrados.iterator().next().lblCadrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(xogo.fichaActual.cadrados.iterator().next().getX(), xogo.fichaActual.cadrados.iterator().next().getY(), -1, -1));
-
-        }*/
-        /*for (int i = 0; i < xogo.fichaActual.cadrados.size(); i++) {
-        
-            xogo.fichaActual.cadrados.get(i).lblCadrado.setBackground(xogo.fichaActual.cadrados.get(i).getCorRecheo());
-            xogo.fichaActual.cadrados.get(i).lblCadrado.setForeground(new java.awt.Color(204, 0, 0));
-            xogo.fichaActual.cadrados.get(i).lblCadrado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-            xogo.fichaActual.cadrados.get(i).lblCadrado.setMaximumSize(new java.awt.Dimension(xogo.LADO_CADRADO, xogo.LADO_CADRADO));
-            xogo.fichaActual.cadrados.get(i).lblCadrado.setMinimumSize(new java.awt.Dimension(xogo.LADO_CADRADO, xogo.LADO_CADRADO));
-            xogo.fichaActual.cadrados.get(i).lblCadrado.setOpaque(true);
-            xogo.fichaActual.cadrados.get(i).lblCadrado.setPreferredSize(new java.awt.Dimension(xogo.LADO_CADRADO, xogo.LADO_CADRADO));
-            xogo.ventanaPrincipal.getPanelJuego().add(xogo.fichaActual.cadrados.get(i).lblCadrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(xogo.fichaActual.cadrados.get(i).getX(), xogo.fichaActual.cadrados.get(i).getY(), -1, -1));
-        }*/
+        this.panelJuego.add(lblCadrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(lblCadrado.getX(), lblCadrado.getY(), -1, -1)); //PINTA LA LABEL ASOCIADA A CADA OBJETO CUADRADO EN EL PANEL DEL JUEGO
     }
 
     public void borrarCadrado() {

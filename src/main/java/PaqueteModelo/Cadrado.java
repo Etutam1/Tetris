@@ -32,6 +32,7 @@ public class Cadrado {
         this.lblCadrado.setMinimumSize(new java.awt.Dimension(Xogo.LADO_CADRADO, Xogo.LADO_CADRADO));
         this.lblCadrado.setOpaque(true);
         this.lblCadrado.setPreferredSize(new java.awt.Dimension(Xogo.LADO_CADRADO, Xogo.LADO_CADRADO));
+        this.lblCadrado.setLocation(x, y);
     }
 
     //SETTERs AND GETTERs
