@@ -375,14 +375,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         frameJuego.setSize(660, 830); //MEDIDAS FRAME JUEGO
         xogo = new Xogo(false, 0, this);
         
-        for (int i = 0; i < xogo.fichaActual.cadrados.size(); i++) {
-            pintarCadrado(xogo.fichaActual.cadrados.get(i).getLblCadrado());
-        }
+        //for (int i = 0; i < xogo.fichaActual.cadrados.size(); i++) {
+            
+        //}
         
     }
 
     public void pintarCadrado(JLabel lblCadrado) {
-        xogo.ventanaPrincipal.getPanelJuego().add(lblCadrado);
+        this.panelJuego.add(lblCadrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(lblCadrado.getX(), lblCadrado.getY(), -1, -1));
         
         
         
