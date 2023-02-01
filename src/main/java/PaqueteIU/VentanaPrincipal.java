@@ -7,6 +7,7 @@ package PaqueteIU;
 import PaqueteModelo.Cadrado;
 import PaqueteModelo.Xogo;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JLabel;
@@ -23,6 +24,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private Timer timer;
     public Xogo xogo;
     private Iterator<Cadrado> iterator;
+    
 
     /**
      * Creates new form VentanaPrincipalFrame
@@ -125,25 +127,37 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         frameJuego.setTitle("Tetris");
         frameJuego.setBackground(new java.awt.Color(204, 204, 204));
         frameJuego.setForeground(java.awt.Color.gray);
-        frameJuego.setResizable(false);
+        frameJuego.setMinimumSize(new java.awt.Dimension(700, 850));
+        frameJuego.setPreferredSize(new java.awt.Dimension(0, 0));
+        frameJuego.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                frameJuegoPropertyChange(evt);
+            }
+        });
+        frameJuego.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelJuego.setBackground(new java.awt.Color(0, 0, 0));
         panelJuego.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panelJuego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        frameJuego.getContentPane().add(panelJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 400, 800));
 
         scoreLabel.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
         scoreLabel.setText("Score:");
+        frameJuego.getContentPane().add(scoreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 24, -1, -1));
 
         score.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
         score.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         score.setText("0");
+        frameJuego.getContentPane().add(score, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 94, 150, -1));
 
         levelLabel.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
         levelLabel.setText("Level:");
+        frameJuego.getContentPane().add(levelLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 191, -1, -1));
 
         level.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
         level.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level.setText("1");
+        frameJuego.getContentPane().add(level, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 261, 150, -1));
 
         pauseButton.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
         pauseButton.setText("PAUSE");
@@ -152,53 +166,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 pauseButtonActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout frameJuegoLayout = new javax.swing.GroupLayout(frameJuego.getContentPane());
-        frameJuego.getContentPane().setLayout(frameJuegoLayout);
-        frameJuegoLayout.setHorizontalGroup(
-            frameJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frameJuegoLayout.createSequentialGroup()
-                .addGroup(frameJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(frameJuegoLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(scoreLabel))
-                    .addGroup(frameJuegoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(score, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(frameJuegoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(frameJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(levelLabel)
-                            .addGroup(frameJuegoLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(level, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(frameJuegoLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(pauseButton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
-        );
-        frameJuegoLayout.setVerticalGroup(
-            frameJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(frameJuegoLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(frameJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(frameJuegoLayout.createSequentialGroup()
-                        .addComponent(scoreLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(score, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(levelLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(level, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(276, 276, 276)
-                        .addComponent(pauseButton)))
-                .addContainerGap())
-        );
-
-        frameJuegoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {level, score});
+        frameJuego.getContentPane().add(pauseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 601, -1, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tetris");
@@ -330,6 +298,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_pauseButtonActionPerformed
 
+    private void frameJuegoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_frameJuegoPropertyChange
+        this.setSize(1000, 1000);
+    }//GEN-LAST:event_frameJuegoPropertyChange
+
     /**
      * @param args the command line arguments
      */
@@ -380,19 +352,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         frameJuego.setVisible(rootPaneCheckingEnabled);   // MUESTRA EL FRAME DEL JUEGO 
         frameJuego.setSize(660, 830);       //MEDIDAS FRAME JUEGO
         xogo = new Xogo(false, 0, this);
-        velocidadJuego();
+        movimientoAbajo();
     }
     
     
-    public void velocidadJuego(){
+    public void movimientoAbajo(){
         Timer timer = new Timer();
         TimerTask task = new TimerTask(){
             @Override
             public void run() {
-            xogo.getFichaActual().moverAbaixo();
+//               try{
+                    xogo.moverFichaAbaixo();
+//               }catch(NoSuchElementException e){
+                   
+//               }
+            
             }      
         };
-        timer.schedule(task,1000 ,1000);     
+        timer.schedule(task,500 ,100);     
+        
     }
     
     public void pintarCadrado(JLabel lblCadrado) {

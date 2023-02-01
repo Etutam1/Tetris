@@ -23,8 +23,9 @@ public class Xogo {
     public int numeroLineas;
     public VentanaPrincipal ventanaPrincipal;
     public Ficha fichaActual;
-    public ArrayList<Cadrado> cadradosChan;
+    public ArrayList<Cadrado> cadradosChan = new ArrayList<>();
     private Iterator<Cadrado> iterator;
+
     //private Ficha[] fichas = {new FichaCadrada(this), new FichaT(this), new FichaBarra(this), new FichaBarra( this)};
     private Random random = new Random();
 
@@ -60,17 +61,7 @@ public class Xogo {
     }
 
     public void moverFichaAbaixo() {
-        /* while (fichaActual.cadrados.get(3).y < this.MAX_Y) {
-            for (int i = 0; i < fichaActual.cadrados.size(); i++) {
-                fichaActual.cadrados.get(i).y = fichaActual.cadrados.get(i).y + 1;
-            }
-            pintarFicha();
-            try{
-                Thread.sleep(2000);
-            } catch (InterruptedException e){
-                System.out.println(e);
-            }   
-        }*/
+        fichaActual.moverAbaixo();
     }
 
     public boolean ePosicionValida(int x, int y) {
@@ -94,7 +85,16 @@ public class Xogo {
     }
 
     public boolean chocaFichaCoChan() {
-        return false;
+        boolean tocaChan = false;
+        iterator = fichaActual.cadrados.iterator();
+        while (iterator.hasNext()) {
+            
+            if (iterator.next().lblCadrado.getY() == this.MAX_Y - Xogo.LADO_CADRADO) {                
+                this.cadradosChan.add(iterator.next());
+                tocaChan = true;
+            }
+        }
+        return tocaChan;
     }
 
     //SETTERs AND GETTERs 
