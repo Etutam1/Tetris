@@ -4,6 +4,7 @@
  */
 package PaqueteModelo;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -49,7 +50,8 @@ public abstract class Ficha {
         while (iterator.hasNext()) {
             Cadrado c = iterator.next();
             c.lblCadrado.setLocation(c.lblCadrado.getX(), c.lblCadrado.getY() + Xogo.LADO_CADRADO);
-            if (xogo.chocaFichaCoChan()) {
+            if (xogo.chocaFichaCoChan() && iterator.hasNext()) {
+                iterator.next().lblCadrado.setBackground(Color.yellow);
                 iterator.remove();
             }
         }

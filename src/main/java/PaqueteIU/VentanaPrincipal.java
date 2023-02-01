@@ -361,11 +361,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         TimerTask task = new TimerTask(){
             @Override
             public void run() {
-//               try{
+              try{
                     xogo.moverFichaAbaixo();
-//               }catch(NoSuchElementException e){
+               }catch(NoSuchElementException e){
                    
-//               }
+               }
             
             }      
         };
