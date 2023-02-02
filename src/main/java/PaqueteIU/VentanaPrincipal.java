@@ -7,7 +7,6 @@ package PaqueteIU;
 import PaqueteModelo.Cadrado;
 import PaqueteModelo.Xogo;
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JLabel;
@@ -361,11 +360,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         TimerTask task = new TimerTask(){
             @Override
             public void run() {
-              try{
+              //try{
                     xogo.moverFichaAbaixo();
-               }catch(NoSuchElementException e){
+               //}catch(NoSuchElementException e){
                    
-               }
+              // }
             
             }      
         };
