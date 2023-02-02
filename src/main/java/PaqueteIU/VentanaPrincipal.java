@@ -65,10 +65,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         labelTituloLevel.setText("SELECT DIFFICULTY");
 
         easyButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        easyButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Downloads\\New Piskel.png")); // NOI18N
         easyButton.setContentAreaFilled(false);
         easyButton.setSelected(true);
-        easyButton.setSelectedIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Downloads\\New Piskel (3).png")); // NOI18N
         easyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 easyButtonActionPerformed(evt);
@@ -76,7 +74,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         hardButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        hardButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Downloads\\New Piskel (2).png")); // NOI18N
         hardButton.setContentAreaFilled(false);
         hardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,7 +82,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         normalButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        normalButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Downloads\\New Piskel (1).png")); // NOI18N
         normalButton.setContentAreaFilled(false);
         normalButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,7 +172,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setForeground(new java.awt.Color(102, 102, 102));
 
         exitButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        exitButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Downloads\\EXIT.png")); // NOI18N
+        exitButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Pictures\\Saved Pictures\\EXIT_STOPPED.png")); // NOI18N
         exitButton.setBorderPainted(false);
         exitButton.setContentAreaFilled(false);
         exitButton.setRolloverIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Pictures\\Saved Pictures\\EXIT.gif")); // NOI18N
@@ -192,7 +188,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         playButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        playButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Downloads\\PLAY.png")); // NOI18N
+        playButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Pictures\\Saved Pictures\\PLAY_STOPPED.png")); // NOI18N
         playButton.setContentAreaFilled(false);
         playButton.setRolloverIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Pictures\\Saved Pictures\\PLAY.gif")); // NOI18N
         playButton.addActionListener(new java.awt.event.ActionListener() {
@@ -202,7 +198,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         settingsButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        settingsButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Downloads\\Levels-1.png.png")); // NOI18N
+        settingsButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Pictures\\Saved Pictures\\Levels-1.png.png")); // NOI18N
         settingsButton.setContentAreaFilled(false);
         settingsButton.setRolloverIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Pictures\\Saved Pictures\\Levels.gif")); // NOI18N
         settingsButton.addActionListener(new java.awt.event.ActionListener() {
