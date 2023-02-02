@@ -9,6 +9,8 @@ import PaqueteModelo.Xogo;
 import java.util.Iterator;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 
 import javax.swing.JPanel;
@@ -18,12 +20,11 @@ import javax.swing.JPanel;
  * @author a22lucastf
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-    
+
     //ATRIBUTOS
     private Timer timer;
     public Xogo xogo;
     private Iterator<Cadrado> iterator;
-    
 
     /**
      * Creates new form VentanaPrincipalFrame
@@ -353,27 +354,32 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         xogo = new Xogo(false, 0, this);
         movimientoAbajo();
     }
-    
-    
-    public void movimientoAbajo(){
-        Timer timer = new Timer();
-        TimerTask task = new TimerTask(){
+
+    public void movimientoAbajo() {
+        timer = new Timer();
+        TimerTask task = new TimerTask() {
             @Override
             public void run() {
-              //try{
+                try {
+
                     xogo.moverFichaAbaixo();
-               //}catch(NoSuchElementException e){
-                   
-              // }
-            
-            }      
+
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         };
-        timer.schedule(task,500 ,100);     
-        
+        timer.schedule(task, 500, 1000);
     }
-    
+
+    public void actualizarPanel() {
+        this.panelJuego.updateUI();
+
+    }
+
     public void pintarCadrado(JLabel lblCadrado) {
         this.panelJuego.add(lblCadrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(lblCadrado.getX(), lblCadrado.getY(), -1, -1)); //PINTA LA LABEL ASOCIADA A CADA OBJETO CUADRADO EN EL PANEL DEL JUEGO
+        actualizarPanel();
     }
 
     public void borrarCadrado() {

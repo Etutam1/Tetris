@@ -60,16 +60,13 @@ public abstract class Ficha {
         return false;
     }
 
-    public boolean moverAbaixo() {
+   public boolean moverAbaixo() {
         iterator = cadrados.iterator();
 
         while (iterator.hasNext()) {
             Cadrado c = iterator.next();
             c.lblCadrado.setLocation(c.lblCadrado.getX(), c.lblCadrado.getY() + Xogo.LADO_CADRADO);
-            if (xogo.chocaFichaCoChan() && iterator.hasNext()) {
-                iterator.next().lblCadrado.setBackground(Color.yellow);
-                iterator.remove();
-            }
+            
         }
         return true;
     }

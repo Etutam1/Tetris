@@ -5,6 +5,7 @@
 package PaqueteModelo;
 
 import PaqueteIU.VentanaPrincipal;
+import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
@@ -16,7 +17,7 @@ import java.util.Random;
 public class Xogo {
 
     //ATRIBUTOS
-    public final static int LADO_CADRADO = 40;
+   public final static int LADO_CADRADO = 40;
     public final int MAX_X;
     public final int MAX_Y;
     public boolean pausa;
@@ -24,9 +25,7 @@ public class Xogo {
     public VentanaPrincipal ventanaPrincipal;
     public Ficha fichaActual;
     public ArrayList<Cadrado> cadradosChan = new ArrayList<>();
-    private Iterator<Cadrado> iterator2 = fichaActual.getIterator();
-
-    //private Ficha[] fichas = {new FichaCadrada(this), new FichaT(this), new FichaBarra(this), new FichaBarra( this)};
+    private Iterator<Cadrado> iterator;
     private Random random = new Random();
 
     //CONSTRUCTOR
@@ -42,12 +41,7 @@ public class Xogo {
         //moverFichaAbaixo();
     }
 
-    //METODOS
-    /*public Ficha crearFichaAleatoria(Xogo xogo) {
-        int indiceAleatorio = random.nextInt(fichas.length);
-        fichaActual = fichas[0];
-        return fichaActual;
-    }*/
+    
     public void moverFichaDereita() {
 
     }
@@ -60,8 +54,17 @@ public class Xogo {
 
     }
 
-    public void moverFichaAbaixo() {
-        fichaActual.moverAbaixo();
+     public void moverFichaAbaixo() throws InterruptedException {
+        boolean flag = false;
+        do {
+            fichaActual.moverAbaixo();
+            sleep(200);
+        } while (chocaFichaCoChan() == false);
+        if (chocaFichaCoChan() == true) {
+            System.out.println("ENTRO");
+            xenerarNovaFicha();
+        }
+
     }
 
     public boolean ePosicionValida(int x, int y) {
@@ -69,6 +72,25 @@ public class Xogo {
     }
 
     public void xenerarNovaFicha() {
+
+        int numAleatorio = (int) (Math.random() * 4 + 1);
+        System.out.println(numAleatorio);
+        if (numAleatorio == 1) {
+            fichaActual = new FichaCadrada(this);
+
+        }
+        if (numAleatorio == 2) {
+            fichaActual = new FichaCadrada(this);
+
+        }
+        if (numAleatorio == 3) {
+            fichaActual = new FichaCadrada(this);
+
+        }
+        if (numAleatorio == 4) {
+            fichaActual = new FichaCadrada(this);
+
+        }
 
     }
 
@@ -86,12 +108,13 @@ public class Xogo {
 
     public boolean chocaFichaCoChan() {
         boolean tocaChan = false;
-        
-        while (iterator2.hasNext()) {
-            
-            if (iterator2.next().lblCadrado.getY() == this.MAX_Y - Xogo.LADO_CADRADO) {                
-                this.cadradosChan.add(iterator2.next());
+        iterator = fichaActual.cadrados.iterator();
+        while (iterator.hasNext()) {
+
+            if (iterator.next().lblCadrado.getY() == this.MAX_Y - Xogo.LADO_CADRADO) {
+                this.cadradosChan.add(iterator.next());
                 tocaChan = true;
+
             }
         }
         return tocaChan;
