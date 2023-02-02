@@ -24,7 +24,7 @@ public class Xogo {
     public VentanaPrincipal ventanaPrincipal;
     public Ficha fichaActual;
     public ArrayList<Cadrado> cadradosChan = new ArrayList<>();
-    private Iterator<Cadrado> iterator;
+    private Iterator<Cadrado> iterator2 = fichaActual.getIterator();
 
     //private Ficha[] fichas = {new FichaCadrada(this), new FichaT(this), new FichaBarra(this), new FichaBarra( this)};
     private Random random = new Random();
@@ -86,11 +86,11 @@ public class Xogo {
 
     public boolean chocaFichaCoChan() {
         boolean tocaChan = false;
-        iterator = fichaActual.cadrados.iterator();
-        while (iterator.hasNext()) {
+        
+        while (iterator2.hasNext()) {
             
-            if (iterator.next().lblCadrado.getY() == this.MAX_Y - Xogo.LADO_CADRADO) {                
-                this.cadradosChan.add(iterator.next());
+            if (iterator2.next().lblCadrado.getY() == this.MAX_Y - Xogo.LADO_CADRADO) {                
+                this.cadradosChan.add(iterator2.next());
                 tocaChan = true;
             }
         }

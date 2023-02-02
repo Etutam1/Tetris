@@ -23,8 +23,24 @@ public abstract class Ficha {
     public Ficha(Xogo xogo) {
         this.xogo = xogo;
     }
+    
+    public Xogo getXogo() {
+        return xogo;
+    }
+
+    public void setXogo(Xogo xogo) {
+        this.xogo = xogo;
+    }
+
+    public Iterator<Cadrado> getIterator() {
+        return iterator;
+    }
 
     //SETTER AND GETTER
+    public void setIterator(Iterator<Cadrado> iterator) {    
+        this.iterator = iterator;
+    }
+
     public ArrayList<Cadrado> getCadrados() {
         return cadrados;
     }
