@@ -65,7 +65,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         labelTituloLevel.setText("SELECT DIFFICULTY");
 
         easyButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        easyButton.setText("EASY");
+        easyButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Downloads\\New Piskel.png")); // NOI18N
+        easyButton.setContentAreaFilled(false);
+        easyButton.setSelected(true);
+        easyButton.setSelectedIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Downloads\\New Piskel (3).png")); // NOI18N
         easyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 easyButtonActionPerformed(evt);
@@ -73,7 +76,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         hardButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        hardButton.setText("HARD");
+        hardButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Downloads\\New Piskel (2).png")); // NOI18N
+        hardButton.setContentAreaFilled(false);
         hardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hardButtonActionPerformed(evt);
@@ -81,7 +85,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         normalButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        normalButton.setText("NORMAL");
+        normalButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Downloads\\New Piskel (1).png")); // NOI18N
+        normalButton.setContentAreaFilled(false);
         normalButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 normalButtonActionPerformed(evt);
@@ -93,16 +98,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         levelsLayout.setHorizontalGroup(
             levelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(levelsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelTituloLevel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, levelsLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(levelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(hardButton)
                     .addComponent(easyButton)
                     .addComponent(normalButton))
-                .addGap(67, 67, 67))
+                .addGap(70, 70, 70))
+            .addGroup(levelsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelTituloLevel)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         levelsLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {easyButton, hardButton, normalButton});
@@ -112,23 +117,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(levelsLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(labelTituloLevel)
+                .addGap(30, 30, 30)
+                .addComponent(easyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(easyButton)
+                .addComponent(normalButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(normalButton)
-                .addGap(18, 18, 18)
-                .addComponent(hardButton)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addComponent(hardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(45, Short.MAX_VALUE))
         );
-
-        levelsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {easyButton, hardButton, normalButton});
 
         frameJuego.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         frameJuego.setTitle("Tetris");
         frameJuego.setBackground(new java.awt.Color(204, 204, 204));
         frameJuego.setForeground(java.awt.Color.gray);
         frameJuego.setMinimumSize(new java.awt.Dimension(700, 850));
-        frameJuego.setPreferredSize(new java.awt.Dimension(0, 0));
         frameJuego.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 frameJuegoPropertyChange(evt);
@@ -174,7 +176,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setForeground(new java.awt.Color(102, 102, 102));
 
         exitButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        exitButton.setText("EXIT");
+        exitButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Downloads\\EXIT.png")); // NOI18N
+        exitButton.setBorderPainted(false);
+        exitButton.setContentAreaFilled(false);
+        exitButton.setRolloverIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Pictures\\Saved Pictures\\EXIT.gif")); // NOI18N
         exitButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 exitButtonMouseClicked(evt);
@@ -187,12 +192,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         playButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        playButton.setText("PLAY");
-        playButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                playButtonMouseEntered(evt);
-            }
-        });
+        playButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Downloads\\PLAY.png")); // NOI18N
+        playButton.setContentAreaFilled(false);
+        playButton.setRolloverIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Pictures\\Saved Pictures\\PLAY.gif")); // NOI18N
         playButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 playButtonActionPerformed(evt);
@@ -200,26 +202,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         settingsButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        settingsButton.setText("LEVELS");
+        settingsButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Downloads\\Levels-1.png.png")); // NOI18N
+        settingsButton.setContentAreaFilled(false);
+        settingsButton.setRolloverIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Pictures\\Saved Pictures\\Levels.gif")); // NOI18N
         settingsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 settingsButtonActionPerformed(evt);
             }
         });
 
+        labelTituloTetris.setIcon(new javax.swing.ImageIcon("C:\\Users\\a22lucastf\\Pictures\\Saved Pictures\\The_Tetris_Company_logo.png")); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(178, 178, 178)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -231,30 +228,38 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(labelTituloTetris, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addGap(0, 14, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(176, 176, 176))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(176, 176, 176)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {exitButton, playButton});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {exitButton, playButton, settingsButton});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(14, 14, 14)
                 .addComponent(labelTituloTetris)
-                .addGap(44, 44, 44)
-                .addComponent(playButton, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(playButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(settingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(settingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addComponent(exitButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {exitButton, playButton});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {exitButton, playButton, settingsButton});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -271,12 +276,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void settingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButtonActionPerformed
         levels.setVisible(rootPaneCheckingEnabled);
-        levels.setSize(280, 300);
+        levels.setSize(260, 340);
     }//GEN-LAST:event_settingsButtonActionPerformed
-
-    private void playButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButtonMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_playButtonMouseEntered
 
     private void exitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonMouseClicked
         this.dispose();
