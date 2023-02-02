@@ -23,7 +23,7 @@ public abstract class Ficha {
     public Ficha(Xogo xogo) {
         this.xogo = xogo;
     }
-    
+
     public Xogo getXogo() {
         return xogo;
     }
@@ -37,7 +37,7 @@ public abstract class Ficha {
     }
 
     //SETTER AND GETTER
-    public void setIterator(Iterator<Cadrado> iterator) {    
+    public void setIterator(Iterator<Cadrado> iterator) {
         this.iterator = iterator;
     }
 
@@ -60,13 +60,15 @@ public abstract class Ficha {
         return false;
     }
 
-   public boolean moverAbaixo() {
+    public boolean moverAbaixo() {
         iterator = cadrados.iterator();
 
         while (iterator.hasNext()) {
-            Cadrado c = iterator.next();
-            c.lblCadrado.setLocation(c.lblCadrado.getX(), c.lblCadrado.getY() + Xogo.LADO_CADRADO);
-            
+            Cadrado cadrado1 = iterator.next();
+            cadrado1.getLblCadrado().setLocation(cadrado1.getLblCadrado().getX(), cadrado1.getLblCadrado().getY() + Xogo.LADO_CADRADO);
+            cadrado1.setX(cadrado1.getLblCadrado().getX());
+            cadrado1.setY(cadrado1.getLblCadrado().getY());
+            System.out.println(cadrado1.getCoordenadas() + "    "+  String.valueOf(cadrado1.getLblCadrado().getX()) +" " + String.valueOf(cadrado1.getLblCadrado().getY()));
         }
         return true;
     }
