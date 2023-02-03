@@ -19,6 +19,7 @@ public class Xogo {
     //ATRIBUTOS
     public final static int LADO_CADRADO = 40;
     public final int MAX_X;
+    public final int MIN_X;
     public final int MAX_Y;
     public boolean pausa;
     public int numeroLineas;
@@ -33,6 +34,7 @@ public class Xogo {
 
         this.MAX_X = 400;
         this.MAX_Y = 800;
+        this.MIN_X = 0;
         this.pausa = pausa;
         this.numeroLineas = numeroLineas;
         this.ventanaPrincipal = ventanaPrincipal;
@@ -76,23 +78,26 @@ public class Xogo {
 
     public void xenerarNovaFicha() {
 
-        int numAleatorio = (int) (Math.random() * 4 + 1);
+        int numAleatorio = (int) (Math.random() * 5 + 1);
         System.out.println("NUMERO RANDOM" + numAleatorio);
         if (numAleatorio == 1) {
             this.fichaActual = new FichaCadrada(this);
 
         }
         if (numAleatorio == 2) {
-            this.fichaActual = new FichaCadrada(this);
+            this.fichaActual = new FichaBarra(this);
 
         }
         if (numAleatorio == 3) {
-            this.fichaActual = new FichaCadrada(this);
+            this.fichaActual = new FichaT(this);
 
         }
         if (numAleatorio == 4) {
-            this.fichaActual = new FichaCadrada(this);
+            this.fichaActual = new FichaL(this);
 
+        }
+        if (numAleatorio == 5) {
+            this.fichaActual = new FichaZ(this);
         }
 
     }
@@ -129,9 +134,8 @@ public class Xogo {
 
             while (iteratorChan.hasNext()) {
 
-                System.out.println("COORDS CHAN : " + iteratorChan.next().getCoordenadas()+ "\n ------------------");
-                
-                
+                System.out.println("COORDS CHAN : " + iteratorChan.next().getCoordenadas() + "\n ------------------");
+
             }
         }
         return tocaChan;
