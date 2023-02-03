@@ -6,6 +6,7 @@ package PaqueteIU;
 
 import PaqueteModelo.Cadrado;
 import PaqueteModelo.Xogo;
+import java.awt.event.KeyEvent;
 import java.util.Iterator;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -22,14 +23,15 @@ import javax.swing.JPanel;
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     //ATRIBUTOS
-    private Timer timer;
+    public Timer timer;
     public Xogo xogo;
-    private Iterator<Cadrado> iterator;
+    private Iterator<Cadrado> iterator3;
 
     /**
      * Creates new form VentanaPrincipalFrame
      */
     public VentanaPrincipal() {
+
         initComponents();
     }
 
@@ -128,16 +130,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         frameJuego.setBackground(new java.awt.Color(204, 204, 204));
         frameJuego.setForeground(java.awt.Color.gray);
         frameJuego.setMinimumSize(new java.awt.Dimension(700, 850));
-        frameJuego.setPreferredSize(new java.awt.Dimension(0, 0));
         frameJuego.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 frameJuegoPropertyChange(evt);
+            }
+        });
+        frameJuego.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                frameJuegoKeyPressed(evt);
             }
         });
         frameJuego.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelJuego.setBackground(new java.awt.Color(0, 0, 0));
         panelJuego.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelJuego.setNextFocusableComponent(playButton);
         panelJuego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         frameJuego.getContentPane().add(panelJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 400, 800));
 
@@ -295,12 +302,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_normalButtonActionPerformed
 
     private void pauseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pauseButtonActionPerformed
-        // TODO add your handling code here:
+        timer.cancel();
+        System.out.println("");
     }//GEN-LAST:event_pauseButtonActionPerformed
 
     private void frameJuegoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_frameJuegoPropertyChange
         this.setSize(1000, 1000);
     }//GEN-LAST:event_frameJuegoPropertyChange
+
+    private void frameJuegoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_frameJuegoKeyPressed
+        //         if (KeyEvent.getKeyText(evt.getKeyCode()).equals("A")) {
+        if (KeyEvent.getKeyText(evt.getKeyCode()).equals("A")) {
+            System.out.println("A");
+            xogo.moverFichaEsquerda();
+        }
+        if (KeyEvent.getKeyText(evt.getKeyCode()).equals("D")) {
+            System.out.println("D");
+            xogo.moverFichaDereita();
+        }
+        if (KeyEvent.getKeyText(evt.getKeyCode()).equals("S")) {
+            System.out.println("S");
+            xogo.moverFichaAbaixoConTecla();
+        }
+        
+    }//GEN-LAST:event_frameJuegoKeyPressed
 
     /**
      * @param args the command line arguments
@@ -350,9 +375,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         this.setVisible(false);      //ESCONDE EL FRAME DE LA VENTANA PRINCIPAL
         frameJuego.setVisible(rootPaneCheckingEnabled);   // MUESTRA EL FRAME DEL JUEGO 
-        frameJuego.setSize(660, 830);       //MEDIDAS FRAME JUEGO
+        //frameJuego.setSize(660, 830);       //MEDIDAS FRAME JUEGO
+        frameJuego.setFocusable(true);
+        panelJuego.setFocusable(true);
         xogo = new Xogo(false, 0, this);
         movimientoAbajo();
+
     }
 
     public void movimientoAbajo() {
@@ -360,8 +388,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                try {
 
+                try {
                     xogo.moverFichaAbaixo();
 
                 } catch (InterruptedException ex) {

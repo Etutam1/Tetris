@@ -26,6 +26,7 @@ public class Xogo {
     public Ficha fichaActual;
     public ArrayList<Cadrado> cadradosChan = new ArrayList<>();
     private Iterator<Cadrado> iterator;
+    private Iterator<Cadrado> iteratorChan;
 
     //CONSTRUCTOR
     public Xogo(boolean pausa, int numeroLineas, VentanaPrincipal ventanaPrincipal) {
@@ -41,15 +42,19 @@ public class Xogo {
     }
 
     public void moverFichaDereita() {
-
+        fichaActual.moverDereita();
     }
 
     public void moverFichaEsquerda() {
-
+        fichaActual.moverEsquerda();
     }
 
     public void RotarFicha() {
 
+    }
+
+    public void moverFichaAbaixoConTecla() {
+        fichaActual.moverAbaixoConTecla();
     }
 
     public void moverFichaAbaixo() throws InterruptedException {
@@ -72,7 +77,7 @@ public class Xogo {
     public void xenerarNovaFicha() {
 
         int numAleatorio = (int) (Math.random() * 4 + 1);
-        System.out.println(numAleatorio);
+        System.out.println("NUMERO RANDOM" + numAleatorio);
         if (numAleatorio == 1) {
             this.fichaActual = new FichaCadrada(this);
 
@@ -110,26 +115,24 @@ public class Xogo {
 
         while (iterator.hasNext()) {
             Cadrado cadrado = iterator.next();
-            if (cadrado.getLblCadrado().getY() == this.MAX_Y - Xogo.LADO_CADRADO) {
-                cadrado.setX(cadrado.lblCadrado.getX());
-                cadrado.setY(cadrado.lblCadrado.getY());
-                cadrado.getLblCadrado().setLocation(cadrado.getX(), cadrado.getY());
+            if (cadrado.getLblCadrado().getY() >= this.MAX_Y - Xogo.LADO_CADRADO) {
+
                 System.out.println("TOCACHAN: " + String.valueOf(cadrado.getLblCadrado().getLocation()) + "  ");
                 tocaChan = true;
 
             }
 
-            if (tocaChan) {
-                this.cadradosChan.addAll(fichaActual.cadrados);
-                iterator = cadradosChan.iterator();
-                Cadrado c = iterator.next();
-                while (iterator.hasNext()) {
-                    System.out.println("arraychan: " + c.getCoordenadas() + "  ");
-                    System.out.println("CADRADOSCHAN " + this.cadradosChan.size());
-                }
+        }
+        if (tocaChan == true) {
+            cadradosChan.addAll(fichaActual.cadrados);
+            iteratorChan = cadradosChan.iterator();
 
+            while (iteratorChan.hasNext()) {
+
+                System.out.println("COORDS CHAN : " + iteratorChan.next().getCoordenadas()+ "\n ------------------");
+                
+                
             }
-
         }
         return tocaChan;
     }
