@@ -12,7 +12,7 @@ import java.awt.Color;
  */
 public class FichaT extends Ficha {
 
-    public Cadrado cadrado1 = new Cadrado(160, 0, Color.MAGENTA);
+    public Cadrado cadrado1 = new Cadrado(xogo.MAX_X/2, 0, Color.MAGENTA);
     public Cadrado cadrado2 = new Cadrado(cadrado1.getX() + xogo.LADO_CADRADO, cadrado1.getY(), Color.MAGENTA);
     public Cadrado cadrado3 = new Cadrado(cadrado2.getX() + xogo.LADO_CADRADO, cadrado2.getY(), Color.MAGENTA);
     public Cadrado cadrado4 = new Cadrado(cadrado2.getX(), cadrado2.getY() + xogo.LADO_CADRADO, Color.MAGENTA);
