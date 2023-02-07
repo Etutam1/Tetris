@@ -399,7 +399,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     public void pintarCadrado(JLabel lblCadrado) {
         this.panelJuego.add(lblCadrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(lblCadrado.getX(), lblCadrado.getY(), -1, -1)); //PINTA LA LABEL ASOCIADA A CADA OBJETO CUADRADO EN EL PANEL DEL JUEGO
-        actualizarPanel();
+//        actualizarPanel();
     }
 
     public void borrarCadrado() {
