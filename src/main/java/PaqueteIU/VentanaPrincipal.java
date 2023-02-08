@@ -195,7 +195,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         playButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        playButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\maste\\Downloads\\Saved Pictures\\PLAY.gif")); // NOI18N
+        playButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PLAY_STOPPED.png"))); // NOI18N
         playButton.setContentAreaFilled(false);
         playButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
