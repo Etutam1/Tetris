@@ -315,6 +315,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             System.out.println("S");
             xogo.moverFichaAbaixoConTecla();
         }
+        if (KeyEvent.getKeyText(evt.getKeyCode()).equals("W")) {
+            System.out.println("PULSADA W");
+            
+            System.out.println("POSICION: " + xogo.fichaActual.posicion);
+            xogo.fichaActual.posicion++;
+            xogo.RotarFicha();
+        }
         
     }//GEN-LAST:event_frameJuegoKeyPressed
 
