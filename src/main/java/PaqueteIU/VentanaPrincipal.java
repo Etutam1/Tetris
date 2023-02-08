@@ -299,7 +299,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_pauseButtonActionPerformed
 
     private void frameJuegoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_frameJuegoPropertyChange
-        this.setSize(1000, 1000);
+        //this.setSize(1000, 1000);
     }//GEN-LAST:event_frameJuegoPropertyChange
 
     private void frameJuegoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_frameJuegoKeyPressed
@@ -370,6 +370,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         //frameJuego.setSize(660, 830);       //MEDIDAS FRAME JUEGO
         frameJuego.setFocusable(true);
         panelJuego.setFocusable(true);
+        frameJuego.setLocationRelativeTo(this.rootPane);
         xogo = new Xogo(false, 0, this);
         movimientoAbajo();
 

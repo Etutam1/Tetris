@@ -8,7 +8,6 @@ import PaqueteIU.VentanaPrincipal;
 import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Random;
 
 /**
  *
@@ -38,9 +37,7 @@ public class Xogo {
         this.pausa = pausa;
         this.numeroLineas = numeroLineas;
         this.ventanaPrincipal = ventanaPrincipal;
-        this.fichaActual = new FichaCadrada(this);  //crearFichaAleatoria(this);
-
-        //moverFichaAbaixo();
+        this.fichaActual = new FichaCadrada(this);  
     }
 
     public void moverFichaDereita() {
@@ -66,10 +63,8 @@ public class Xogo {
             if (chocaFichaCoChan() == true) {
                 System.out.println("ENTRO");
                 xenerarNovaFicha();
-
             }
         }
-
     }
 
     public boolean ePosicionValida(int x, int y) {
@@ -103,7 +98,7 @@ public class Xogo {
     }
 
     public void engadirFichaAoChan() {
-
+        cadradosChan.addAll(fichaActual.cadrados);
     }
 
     public void borrarLinasCompletas() {
@@ -124,18 +119,15 @@ public class Xogo {
 
                 System.out.println("TOCACHAN: " + String.valueOf(cadrado.getLblCadrado().getLocation()) + "  ");
                 tocaChan = true;
-
             }
-
         }
         if (tocaChan == true) {
-            cadradosChan.addAll(fichaActual.cadrados);
+            this.engadirFichaAoChan();
             iteratorChan = cadradosChan.iterator();
 
             while (iteratorChan.hasNext()) {
 
                 System.out.println("COORDS CHAN : " + iteratorChan.next().getCoordenadas() + "\n ------------------");
-
             }
         }
         return tocaChan;
