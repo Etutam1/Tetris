@@ -39,7 +39,7 @@ public class Xogo {
         this.pausa = pausa;
         this.numeroLineas = numeroLineas;
         this.ventanaPrincipal = ventanaPrincipal;
-        this.fichaActual = new FichaCadrada(this);
+        
     }
 
 //    public boolean ePosicionValida(int x, int y) {

@@ -299,6 +299,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         timer.stop();
         System.out.println("");
         
+        
     }//GEN-LAST:event_pauseButtonActionPerformed
 
     private void frameJuegoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_frameJuegoPropertyChange
@@ -378,7 +379,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         this.setVisible(false);              //ESCONDE EL FRAME DE LA VENTANA PRINCIPAL
         frameJuego.setVisible(true);        // MUESTRA EL FRAME DEL JUEGO 
-
         frameJuego.setFocusable(true);
         panelJuego.setFocusable(true);
         frameJuego.setLocationRelativeTo(this.rootPane);
