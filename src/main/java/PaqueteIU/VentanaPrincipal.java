@@ -6,15 +6,17 @@ package PaqueteIU;
 
 import PaqueteModelo.Cadrado;
 import PaqueteModelo.Xogo;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import java.awt.event.KeyEvent;
 import java.util.Iterator;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
 
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 /**
  *
@@ -33,7 +35,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public VentanaPrincipal() {
 
         initComponents();
-        
+
     }
 
     /**
@@ -145,7 +147,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelJuego.setBackground(new java.awt.Color(0, 0, 0));
         panelJuego.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panelJuego.setNextFocusableComponent(playButton);
-        panelJuego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelJuego.setLayout(null);
         frameJuego.getContentPane().add(panelJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 400, 800));
 
         scoreLabel.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
@@ -294,8 +296,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_normalButtonActionPerformed
 
     private void pauseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pauseButtonActionPerformed
-        timer.cancel();
+        timer.stop();
         System.out.println("");
+        
     }//GEN-LAST:event_pauseButtonActionPerformed
 
     private void frameJuegoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_frameJuegoPropertyChange
@@ -314,9 +317,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         if (KeyEvent.getKeyText(evt.getKeyCode()).equals("S")) {
             System.out.println("S");
-            xogo.moverFichaAbaixoConTecla();
+            xogo.moverFichaAbaixo();
         }
-        
+
     }//GEN-LAST:event_frameJuegoKeyPressed
 
     /**
@@ -365,42 +368,33 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void iniciarPartida() {
 
-        this.setVisible(false);      //ESCONDE EL FRAME DE LA VENTANA PRINCIPAL
-        frameJuego.setVisible(rootPaneCheckingEnabled);   // MUESTRA EL FRAME DEL JUEGO 
-        //frameJuego.setSize(660, 830);       //MEDIDAS FRAME JUEGO
+        this.setVisible(false);              //ESCONDE EL FRAME DE LA VENTANA PRINCIPAL
+        frameJuego.setVisible(true);        // MUESTRA EL FRAME DEL JUEGO 
+
         frameJuego.setFocusable(true);
         panelJuego.setFocusable(true);
         frameJuego.setLocationRelativeTo(this.rootPane);
         xogo = new Xogo(false, 0, this);
-        movimientoAbajo();
-
+        xogo.xenerarNovaFicha();
+        movimientoCaida();
+        timer.start();
     }
 
-    public void movimientoAbajo() {
-        timer = new Timer();
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
+    public void movimientoCaida() {
 
-                try {
-                    xogo.moverFichaAbaixo();
-
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        };
-        timer.schedule(task, 500, 1000);
+        timer = new Timer(1000, (ActionEvent e) -> {
+            xogo.moverFichaAbaixo();
+            
+        });
     }
 
     public void actualizarPanel() {
-        this.panelJuego.updateUI();
-
+        panelJuego.updateUI();
     }
 
     public void pintarCadrado(JLabel lblCadrado) {
         this.panelJuego.add(lblCadrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(lblCadrado.getX(), lblCadrado.getY(), -1, -1)); //PINTA LA LABEL ASOCIADA A CADA OBJETO CUADRADO EN EL PANEL DEL JUEGO
-//        actualizarPanel();
+        
     }
 
     public void borrarCadrado() {

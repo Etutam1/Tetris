@@ -12,7 +12,7 @@ import java.awt.Color;
  */
 public class FichaBarra extends Ficha {
 
-    public Cadrado cadrado1 = new Cadrado(xogo.MAX_X/2, 0, Color.BLUE);
+    public Cadrado cadrado1 = new Cadrado(xogo.MAX_X/2, xogo.MIN_Y, Color.BLUE);
     public Cadrado cadrado2 = new Cadrado(cadrado1.getX()+ xogo.LADO_CADRADO, cadrado1.getY() , Color.BLUE);
     public Cadrado cadrado3 = new Cadrado(cadrado2.getX() + xogo.LADO_CADRADO, cadrado2.getY(), Color.BLUE);
     public Cadrado cadrado4 = new Cadrado(cadrado3.getX() + xogo.LADO_CADRADO, cadrado3.getY(), Color.BLUE);
@@ -20,10 +20,7 @@ public class FichaBarra extends Ficha {
     //CONSTRUCTOR
     public FichaBarra(Xogo xogo) {
         super(xogo);
-        xogo.ventanaPrincipal.pintarCadrado(cadrado1.lblCadrado);
-        xogo.ventanaPrincipal.pintarCadrado(cadrado2.lblCadrado);
-        xogo.ventanaPrincipal.pintarCadrado(cadrado3.lblCadrado);
-        xogo.ventanaPrincipal.pintarCadrado(cadrado4.lblCadrado);
+
         cadrados.add(cadrado1);
         cadrados.add(cadrado2);
         cadrados.add(cadrado3);
