@@ -52,7 +52,7 @@ public class Xogo {
     }
 
     public void RotarFicha() {
-
+        this.fichaActual.rotar();
     }
 
     public void moverFichaAbaixoConTecla() {
