@@ -15,7 +15,7 @@ public class FichaL extends Ficha {
     public Cadrado cadrado1 = new Cadrado(xogo.MAX_X/2, xogo.MIN_Y, Color.ORANGE);
     public Cadrado cadrado2 = new Cadrado(cadrado1.getX() + xogo.LADO_CADRADO, cadrado1.getY(), Color.ORANGE);
     public Cadrado cadrado3 = new Cadrado(cadrado2.getX() + xogo.LADO_CADRADO, cadrado2.getY(), Color.ORANGE);
-    public Cadrado cadrado4 = new Cadrado(cadrado3.getX(), cadrado3.getY() + xogo.LADO_CADRADO, Color.ORANGE);
+    public Cadrado cadrado4 = new Cadrado(cadrado3.getX(), cadrado3.getY() - xogo.LADO_CADRADO, Color.ORANGE);
 
     //CONSTRUCTOR
     public FichaL(Xogo xogo) {
@@ -30,7 +30,32 @@ public class FichaL extends Ficha {
     //METODOS
     @Override
     public boolean rotar() {
-        return false;
-    }
+        System.out.println("ROTAR");
+        if (posicion > 3) {
+            posicion = 0;
+        }
+        if (posicion == 0) {
+            cadrado1.getLblCadrado().setLocation(cadrado2.getX() - Xogo.LADO_CADRADO, cadrado2.getY());
+            cadrado3.getLblCadrado().setLocation(cadrado2.getX() + Xogo.LADO_CADRADO, cadrado2.getY());
+            cadrado4.getLblCadrado().setLocation(cadrado2.getX() + Xogo.LADO_CADRADO, cadrado2.getY() - Xogo.LADO_CADRADO);
+        }
 
+        else if (posicion == 1) {
+            cadrado1.getLblCadrado().setLocation(cadrado2.getX(), cadrado2.getY() - Xogo.LADO_CADRADO);
+            cadrado3.getLblCadrado().setLocation(cadrado2.getX(), cadrado2.getY() + Xogo.LADO_CADRADO);
+            cadrado4.getLblCadrado().setLocation(cadrado2.getX() + Xogo.LADO_CADRADO, cadrado2.getY() + Xogo.LADO_CADRADO);
+        }
+        else if (posicion == 2) {
+            cadrado1.getLblCadrado().setLocation(cadrado2.getX() - Xogo.LADO_CADRADO, cadrado2.getY());
+            cadrado3.getLblCadrado().setLocation(cadrado2.getX() + Xogo.LADO_CADRADO, cadrado2.getY());
+            cadrado4.getLblCadrado().setLocation(cadrado2.getX() - Xogo.LADO_CADRADO, cadrado2.getY() + Xogo.LADO_CADRADO);
+        }
+
+        else if (posicion == 3) {
+            cadrado1.getLblCadrado().setLocation(cadrado2.getX(), cadrado2.getY() - Xogo.LADO_CADRADO);
+            cadrado3.getLblCadrado().setLocation(cadrado2.getX(), cadrado2.getY() + Xogo.LADO_CADRADO);
+            cadrado4.getLblCadrado().setLocation(cadrado2.getX() - Xogo.LADO_CADRADO, cadrado2.getY() - Xogo.LADO_CADRADO);
+        }
+        return true;
+    }
 }

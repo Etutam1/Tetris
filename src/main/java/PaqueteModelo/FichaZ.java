@@ -29,7 +29,19 @@ public class FichaZ  extends Ficha{
     //METODOS
     @Override
     public boolean rotar() {
-        return false;
+            if(xogo.fichaActual.posicion > 1){
+                xogo.fichaActual.posicion = 0;
+            }
+            if(posicion == 0){
+                cadrado1.getLblCadrado().setLocation(cadrado2.getX() - Xogo.LADO_CADRADO , cadrado2.getY());
+                cadrado3.getLblCadrado().setLocation(cadrado2.getX() , cadrado2.getY() + Xogo.LADO_CADRADO);
+                cadrado4.getLblCadrado().setLocation(cadrado2.getX() + Xogo.LADO_CADRADO , cadrado2.getY() + Xogo.LADO_CADRADO);
+                }
+            if(posicion == 1){
+                cadrado1.getLblCadrado().setLocation(cadrado2.getX(), cadrado2.getY() - Xogo.LADO_CADRADO);
+                cadrado3.getLblCadrado().setLocation(cadrado2.getX() + Xogo.LADO_CADRADO , cadrado2.getY());
+                cadrado4.getLblCadrado().setLocation(cadrado2.getX() + Xogo.LADO_CADRADO , cadrado2.getY() + Xogo.LADO_CADRADO);
+                }
+            return true;
+        }
     }
-
-}

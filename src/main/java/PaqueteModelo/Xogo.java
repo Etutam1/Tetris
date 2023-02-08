@@ -84,11 +84,11 @@ public class Xogo {
     }
 
     public void RotarFicha() {
-
+        fichaActual.rotar();
     }
 
     public void xenerarNovaFicha() {
-
+       
         int numAleatorio = (int) (Math.random() * 5 + 1);
         System.out.println("NUMERO RANDOM" + numAleatorio);
         if (numAleatorio == 1) {

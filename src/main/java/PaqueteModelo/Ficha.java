@@ -18,77 +18,13 @@ public abstract class Ficha {
     public ArrayList<Cadrado> cadrados = new ArrayList<>();
     public Xogo xogo;
     private Iterator<Cadrado> iterator;
+    public int posicion = 0;
 
     //CONSTRUCTOR
     public Ficha(Xogo xogo) {
         this.xogo = xogo;
     }
 
-    
-
-    //METODOS 
-    
-    public abstract boolean rotar();
-    
-    public boolean moverAbaixo() {
-        iterator = cadrados.iterator();
-
-        while (iterator.hasNext()) {
-            Cadrado cadrado1 = iterator.next();
-            cadrado1.getLblCadrado().setLocation(cadrado1.getLblCadrado().getX(), cadrado1.getLblCadrado().getY() + Xogo.LADO_CADRADO);
-            cadrado1.setX(cadrado1.getLblCadrado().getX());
-            cadrado1.setY(cadrado1.getLblCadrado().getY());
-//            xogo.ventanaPrincipal.pintarCadrado(cadrado1.getLblCadrado());
-            System.out.println(cadrado1.getCoordenadas() + "    "+  String.valueOf(cadrado1.getLblCadrado().getX()) +" " + String.valueOf(cadrado1.getLblCadrado().getY()));
-        }
-        return true;
-    }
-    public boolean moverDereita() {
-        iterator = cadrados.iterator();
-        
-        while (iterator.hasNext()) {
-            Cadrado cadrado3 = iterator.next();
-            cadrado3.getLblCadrado().setLocation(cadrado3.getLblCadrado().getX() + Xogo.LADO_CADRADO, cadrado3.getLblCadrado().getY());
-            cadrado3.setX(cadrado3.getLblCadrado().getX());
-            cadrado3.setY(cadrado3.getLblCadrado().getY());
-//            xogo.ventanaPrincipal.pintarCadrado(cadrado3.getLblCadrado());
-        }
-        return true;
-    }
-
-    public boolean moverEsquerda() {
-        iterator = cadrados.iterator();
-        
-        while (iterator.hasNext()) {
-            
-            Cadrado cadrado2 = iterator.next();
-            cadrado2.getLblCadrado().setLocation(cadrado2.getLblCadrado().getX() - Xogo.LADO_CADRADO, cadrado2.getLblCadrado().getY());
-            cadrado2.setX(cadrado2.getLblCadrado().getX());
-            cadrado2.setY(cadrado2.getLblCadrado().getY());
-//            xogo.ventanaPrincipal.pintarCadrado(cadrado2.getLblCadrado());
-        }
-        
-        return true;
-    }
-    public boolean moverAbaixoConTecla() {
-        iterator = cadrados.iterator();
-        
-        while (iterator.hasNext()) {
-            Cadrado cadrado4 = iterator.next();
-            cadrado4.getLblCadrado().setLocation(cadrado4.getLblCadrado().getX() , cadrado4.getLblCadrado().getY()+Xogo.LADO_CADRADO);
-            cadrado4.setX(cadrado4.getLblCadrado().getX());
-            cadrado4.setY(cadrado4.getLblCadrado().getY());
-//            xogo.ventanaPrincipal.pintarCadrado(cadrado4.getLblCadrado());
-        }
-        return true;
-        
-    }
-    
-   
-
-    
-
-//GETTER Y SETTERS 
     public Xogo getXogo() {
         return xogo;
     }
@@ -101,8 +37,17 @@ public abstract class Ficha {
         return iterator;
     }
 
+    //SETTER AND GETTER
     public void setIterator(Iterator<Cadrado> iterator) {
         this.iterator = iterator;
+    }
+
+    public void setPosicion(int posicion) {
+        this.posicion = posicion;
+    }
+
+    public int getPosicion() {
+        return posicion;
     }
 
     public ArrayList<Cadrado> getCadrados() {
@@ -112,4 +57,64 @@ public abstract class Ficha {
     public void setCadrados(ArrayList<Cadrado> cadrados) {
         this.cadrados = cadrados;
     }
+
+    //METODOS 
+    public boolean moverDereita() {
+        iterator = cadrados.iterator();
+
+        while (iterator.hasNext()) {
+            Cadrado cadrado3 = iterator.next();
+            cadrado3.getLblCadrado().setLocation(cadrado3.getLblCadrado().getX() + Xogo.LADO_CADRADO, cadrado3.getLblCadrado().getY());
+            cadrado3.setX(cadrado3.getLblCadrado().getX());
+            cadrado3.setY(cadrado3.getLblCadrado().getY());
+           
+        }
+        return true;
+    }
+
+    public boolean moverEsquerda() {
+        iterator = cadrados.iterator();
+
+        while (iterator.hasNext()) {
+
+            Cadrado cadrado2 = iterator.next();
+            cadrado2.getLblCadrado().setLocation(cadrado2.getLblCadrado().getX() - Xogo.LADO_CADRADO, cadrado2.getLblCadrado().getY());
+            cadrado2.setX(cadrado2.getLblCadrado().getX());
+            cadrado2.setY(cadrado2.getLblCadrado().getY());
+            
+        }
+
+        return true;
+    }
+
+    public boolean moverAbaixoConTecla() {
+        iterator = cadrados.iterator();
+
+        while (iterator.hasNext()) {
+            Cadrado cadrado4 = iterator.next();
+            cadrado4.getLblCadrado().setLocation(cadrado4.getLblCadrado().getX(), cadrado4.getLblCadrado().getY() + Xogo.LADO_CADRADO);
+            cadrado4.setX(cadrado4.getLblCadrado().getX());
+            cadrado4.setY(cadrado4.getLblCadrado().getY());
+            
+        }
+        return true;
+
+    }
+
+    public boolean moverAbaixo() {
+        iterator = cadrados.iterator();
+
+        while (iterator.hasNext()) {
+            Cadrado cadrado1 = iterator.next();
+            cadrado1.getLblCadrado().setLocation(cadrado1.getLblCadrado().getX(), cadrado1.getLblCadrado().getY() + Xogo.LADO_CADRADO);
+            cadrado1.setX(cadrado1.getLblCadrado().getX());
+            cadrado1.setY(cadrado1.getLblCadrado().getY());
+            xogo.ventanaPrincipal.pintarCadrado(cadrado1.getLblCadrado());
+            System.out.println(cadrado1.getCoordenadas() + "    " + String.valueOf(cadrado1.getLblCadrado().getX()) + " " + String.valueOf(cadrado1.getLblCadrado().getY()));
+        }
+        return true;
+    }
+
+    public abstract boolean rotar();
+
 }
