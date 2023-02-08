@@ -301,8 +301,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Monospaced" size="24" style="1"/>
         </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/PLAY_STOPPED.png"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new javax.swing.ImageIcon(&quot;C:\\Users\\a22lucastf\\Documents\\Tetris\\src\\main\\java\\PLAY_STOPPED.png&quot;)" type="code"/>
         </Property>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
