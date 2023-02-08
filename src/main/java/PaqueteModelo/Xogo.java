@@ -52,7 +52,7 @@ public class Xogo {
     }
 
     public void RotarFicha() {
-
+        this.fichaActual.rotar();
     }
 
     public void moverFichaAbaixoConTecla() {
@@ -78,6 +78,7 @@ public class Xogo {
 
     public void xenerarNovaFicha() {
 
+        this.fichaActual.posicion = 0;
         int numAleatorio = (int) (Math.random() * 5 + 1);
         System.out.println("NUMERO RANDOM" + numAleatorio);
         if (numAleatorio == 1) {

@@ -12,9 +12,9 @@ import java.awt.Color;
  */
 public class FichaZ  extends Ficha{
     public Cadrado cadrado1 = new Cadrado(160, 0, Color.YELLOW);
-    public Cadrado cadrado2 = new Cadrado(cadrado1.getX() + xogo.LADO_CADRADO, cadrado1.getY(), Color.YELLOW);
-    public Cadrado cadrado3 = new Cadrado(cadrado2.getX(), cadrado2.getY() + xogo.LADO_CADRADO, Color.YELLOW);
-    public Cadrado cadrado4 = new Cadrado(cadrado3.getX() + xogo.LADO_CADRADO, cadrado3.getY(), Color.YELLOW);
+    public Cadrado cadrado2 = new Cadrado(cadrado1.getX() + Xogo.LADO_CADRADO, cadrado1.getY(), Color.YELLOW);
+    public Cadrado cadrado3 = new Cadrado(cadrado1.getX() + Xogo.LADO_CADRADO, cadrado2.getY() + xogo.LADO_CADRADO, Color.YELLOW);
+    public Cadrado cadrado4 = new Cadrado(cadrado1.getX() + 2*Xogo.LADO_CADRADO, cadrado1.getY() + Xogo.LADO_CADRADO, Color.YELLOW);
 
     //CONSTRUCTOR
     public FichaZ(Xogo xogo) {
@@ -32,7 +32,19 @@ public class FichaZ  extends Ficha{
     //METODOS
     @Override
     public boolean rotar() {
-        return false;
+            if(xogo.fichaActual.posicion > 1){
+                xogo.fichaActual.posicion = 0;
+            }
+            if(xogo.fichaActual.posicion == 0){
+                cadrado1.getLblCadrado().setLocation(cadrado2.getX() - Xogo.LADO_CADRADO , cadrado2.getY());
+                cadrado3.getLblCadrado().setLocation(cadrado2.getX() , cadrado2.getY() + Xogo.LADO_CADRADO);
+                cadrado4.getLblCadrado().setLocation(cadrado2.getX() + Xogo.LADO_CADRADO , cadrado2.getY() + Xogo.LADO_CADRADO);
+                }
+            if(xogo.fichaActual.posicion == 1){
+                cadrado1.getLblCadrado().setLocation(cadrado2.getX(), cadrado2.getY() - Xogo.LADO_CADRADO);
+                cadrado3.getLblCadrado().setLocation(cadrado2.getX() + Xogo.LADO_CADRADO , cadrado2.getY());
+                cadrado4.getLblCadrado().setLocation(cadrado2.getX() + Xogo.LADO_CADRADO , cadrado2.getY() + Xogo.LADO_CADRADO);
+                }
+            return true;
+        }
     }
-
-}
