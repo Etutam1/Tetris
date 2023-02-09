@@ -39,24 +39,24 @@ public class Xogo {
         this.pausa = pausa;
         this.numeroLineas = numeroLineas;
         this.ventanaPrincipal = ventanaPrincipal;
-        
+
     }
 
-//    public boolean ePosicionValida(int x, int y) {
-//        boolean posicionValida = false;
-//        iterator = fichaActual.cadrados.iterator();
-//       
-//        if (x < MAX_X && x >= MIN_X && y < MAX_Y + LADO_CADRADO && y >= MIN_Y) {
-//            posicionValida = true;
-//        }
-//        while (iterator.hasNext()) {
-//             Cadrado cadradoComprobado = iterator.next();
-//            if (cadradoComprobado.getLblCadrado().getX() == x && cadradoComprobado.getLblCadrado().getY() + LADO_CADRADO == y) {
-//                posicionValida = false;
-//            }
-//        }
-//        return posicionValida;
-//    }
+    public boolean ePosicionValida(int x, int y) {
+        boolean posicionValida = false;
+        iterator = fichaActual.cadrados.iterator();
+
+        if (x < MAX_X && x > MIN_X && y < MAX_Y + LADO_CADRADO && y >= MIN_Y) {
+            posicionValida = true;
+        }
+        while (iterator.hasNext()) {
+            Cadrado cadradoComprobado = iterator.next();
+            if (cadradoComprobado.getLblCadrado().getX() == x && cadradoComprobado.getLblCadrado().getY() + LADO_CADRADO == y) {
+                posicionValida = false;
+            }
+        }
+        return posicionValida;
+    }
 
     public void moverFichaAbaixo() {
         if (chocaFichaCoChan() == false) {
@@ -73,14 +73,17 @@ public class Xogo {
     }
 
     public void moverFichaEsquerda() {
-//        iterator = fichaActual.cadrados.iterator();
-//        
-//        while (iterator.hasNext()) {
-//            Cadrado cadradoActual = iterator.next();
-//            if (ePosicionValida(cadradoActual.getLblCadrado().getX(), cadradoActual.getLblCadrado().getY()) == true) {
+        iterator = fichaActual.cadrados.iterator();
+
+        while (iterator.hasNext()) {
+            Cadrado cadradoActual = iterator.next();
+            if (ePosicionValida(cadradoActual.getLblCadrado().getX(), cadradoActual.getLblCadrado().getY()) == true) {
                 fichaActual.moverEsquerda();
-//            }
-//        }
+            }
+            if (ePosicionValida(cadradoActual.getLblCadrado().getX(), cadradoActual.getLblCadrado().getY()) == false) {
+                
+            }
+        }
     }
 
     public void RotarFicha() {
@@ -88,8 +91,8 @@ public class Xogo {
     }
 
     public void xenerarNovaFicha() {
-       
-        int numAleatorio = (int) (Math.random() * 5 + 1);
+
+        int numAleatorio = (int) (Math.random() * 7 + 1);
         System.out.println("NUMERO RANDOM" + numAleatorio);
         if (numAleatorio == 1) {
             fichaActual = new FichaCadrada(this);
@@ -110,12 +113,18 @@ public class Xogo {
         if (numAleatorio == 5) {
             fichaActual = new FichaZ(this);
         }
+        if (numAleatorio == 6) {
+            fichaActual = new FichaLInversa(this);
+        }
+        if (numAleatorio == 7) {
+            fichaActual = new FichaZInversa(this);
+        }
         pintarFicha();
     }
 
     public void pintarFicha() {
         iterator = fichaActual.getCadrados().iterator();
-        
+
         while (iterator.hasNext()) {
             Cadrado cadrado = iterator.next();
             ventanaPrincipal.pintarCadrado(cadrado.getLblCadrado());
@@ -128,7 +137,7 @@ public class Xogo {
 
         while (iterator.hasNext()) {
             Cadrado cadrado = iterator.next();
-            if (cadrado.getLblCadrado().getY() >= this.MAX_Y - Xogo.LADO_CADRADO /*|| !ePosicionValida(cadrado.getX(), cadrado.getY() + LADO_CADRADO*/)  {
+            if (cadrado.getLblCadrado().getY() >= this.MAX_Y - Xogo.LADO_CADRADO /*|| !ePosicionValida(cadrado.getX(), cadrado.getY() + LADO_CADRADO*/) {
 
                 System.out.println("TOCACHAN: " + String.valueOf(cadrado.getLblCadrado().getLocation()) + "  ");
                 tocaChan = true;
