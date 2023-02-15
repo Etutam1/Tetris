@@ -28,6 +28,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public Timer timer;
     public Xogo xogo;
     private Iterator<Cadrado> iterator3;
+    public int contadorScore = 0;
 
     /**
      * Creates new form VentanaPrincipalFrame
@@ -296,10 +297,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_normalButtonActionPerformed
 
     private void pauseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pauseButtonActionPerformed
-        timer.stop();
-        System.out.println("");
-        
-        
+        if(pauseButton.isSelected()){
+            timer.stop();
+        }
+        else{
+            timer.start();
+        }
     }//GEN-LAST:event_pauseButtonActionPerformed
 
     private void frameJuegoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_frameJuegoPropertyChange
@@ -322,12 +325,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         if (KeyEvent.getKeyText(evt.getKeyCode()).equals("W")) {
             System.out.println("PULSADA W");
-            
+
             System.out.println("POSICION: " + xogo.fichaActual.posicion);
             xogo.fichaActual.posicion++;
             xogo.RotarFicha();
         }
-        
+
 
     }//GEN-LAST:event_frameJuegoKeyPressed
 
@@ -392,8 +395,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         timer = new Timer(1000, (ActionEvent e) -> {
             xogo.moverFichaAbaixo();
-            
+            aumentarScore();
         });
+    }
+
+    public void aumentarScore() {
+        score.setText(String.valueOf(++contadorScore));
     }
 
     public void actualizarPanel() {
@@ -402,7 +409,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     public void pintarCadrado(JLabel lblCadrado) {
         this.panelJuego.add(lblCadrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(lblCadrado.getX(), lblCadrado.getY(), -1, -1)); //PINTA LA LABEL ASOCIADA A CADA OBJETO CUADRADO EN EL PANEL DEL JUEGO
-        
+
     }
 
     public void borrarCadrado() {
