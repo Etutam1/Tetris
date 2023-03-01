@@ -34,7 +34,7 @@ public class Xogo {
     public Xogo(boolean pausa, int numeroLineas, VentanaPrincipal ventanaPrincipal) {
 
         this.MAX_X = 400;
-        this.MIN_X = 0 - Xogo.LADO_CADRADO;
+        this.MIN_X = 0 ;
         this.MAX_Y = 800;
         this.MIN_Y = 0;
         this.pausa = pausa;
@@ -45,7 +45,7 @@ public class Xogo {
 
     public boolean ePosicionValida(int x, int y) {
         boolean posicionValida = false;
-        if (x < MAX_X && x > MIN_X && y < MAX_Y && y >= MIN_Y) {
+        if (x < MAX_X && x >= MIN_X && y < MAX_Y && y >= MIN_Y) {
             posicionValida = true;
         }
         iteratorChan = cadradosChan.iterator();
