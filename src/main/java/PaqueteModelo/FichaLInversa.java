@@ -12,10 +12,10 @@ import java.awt.Color;
  */
 public class FichaLInversa extends Ficha{
 
-    public Cadrado cadrado1 = new Cadrado(xogo.MAX_X/2, xogo.MIN_Y, Color.ORANGE);
-    public Cadrado cadrado2 = new Cadrado(cadrado1.getX() + xogo.LADO_CADRADO, cadrado1.getY(), Color.ORANGE);
-    public Cadrado cadrado3 = new Cadrado(cadrado2.getX() + xogo.LADO_CADRADO, cadrado2.getY(), Color.ORANGE);
-    public Cadrado cadrado4 = new Cadrado(cadrado1.getX(), cadrado3.getY() - xogo.LADO_CADRADO, Color.ORANGE);
+    public Cadrado cadrado1 = new Cadrado(xogo.MAX_X/2, xogo.MIN_Y, Color.BLUE);
+    public Cadrado cadrado2 = new Cadrado(cadrado1.getX() + xogo.LADO_CADRADO, cadrado1.getY(), Color.BLUE);
+    public Cadrado cadrado3 = new Cadrado(cadrado2.getX() + xogo.LADO_CADRADO, cadrado2.getY(), Color.BLUE);
+    public Cadrado cadrado4 = new Cadrado(cadrado1.getX(), cadrado3.getY() - xogo.LADO_CADRADO, Color.BLUE);
 
     //CONSTRUCTOR
     public FichaLInversa(Xogo xogo) {

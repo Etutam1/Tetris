@@ -11,10 +11,10 @@ import java.awt.Color;
  * @author maste
  */
 public class FichaZ  extends Ficha{
-    public Cadrado cadrado1 = new Cadrado(xogo.MAX_X/2, xogo.MIN_Y, Color.YELLOW);
-    public Cadrado cadrado2 = new Cadrado(cadrado1.getX() + xogo.LADO_CADRADO, cadrado1.getY(), Color.YELLOW);
-    public Cadrado cadrado3 = new Cadrado(cadrado2.getX(), cadrado2.getY() + xogo.LADO_CADRADO, Color.YELLOW);
-    public Cadrado cadrado4 = new Cadrado(cadrado3.getX() + xogo.LADO_CADRADO, cadrado3.getY(), Color.YELLOW);
+    public Cadrado cadrado1 = new Cadrado(xogo.MAX_X/2, xogo.MIN_Y, Color.RED);
+    public Cadrado cadrado2 = new Cadrado(cadrado1.getX() + xogo.LADO_CADRADO, cadrado1.getY(), Color.RED);
+    public Cadrado cadrado3 = new Cadrado(cadrado2.getX(), cadrado2.getY() + xogo.LADO_CADRADO, Color.RED);
+    public Cadrado cadrado4 = new Cadrado(cadrado3.getX() + xogo.LADO_CADRADO, cadrado3.getY(), Color.RED);
 
     //CONSTRUCTOR
     public FichaZ(Xogo xogo) {
