@@ -185,9 +185,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setForeground(new java.awt.Color(102, 102, 102));
 
         exitButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Imagenes/Easy.png"))); // NOI18N
+        exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Imagenes/EXIT_STOPPED.png"))); // NOI18N
         exitButton.setBorderPainted(false);
         exitButton.setContentAreaFilled(false);
+        exitButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Imagenes/EXIT.gif"))); // NOI18N
         exitButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 exitButtonMouseClicked(evt);
@@ -200,8 +201,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         playButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        playButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Imagenes/Easy.png"))); // NOI18N
+        playButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Imagenes/PLAY_STOPPED.png"))); // NOI18N
         playButton.setContentAreaFilled(false);
+        playButton.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Imagenes/PLAY.gif"))); // NOI18N
         playButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 playButtonActionPerformed(evt);
@@ -209,13 +211,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         settingsButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        settingsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Imagenes/Easy.png"))); // NOI18N
+        settingsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Imagenes/Levels-1.png.png"))); // NOI18N
         settingsButton.setContentAreaFilled(false);
+        settingsButton.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Imagenes/Levels.gif"))); // NOI18N
         settingsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 settingsButtonActionPerformed(evt);
             }
         });
+
+        labelTituloTetris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Imagenes/The_Tetris_Company_logo.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
