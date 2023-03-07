@@ -7,12 +7,13 @@ package PaqueteIU;
 import PaqueteModelo.Cadrado;
 import PaqueteModelo.Xogo;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sound.sampled.*;
 import javax.swing.JLabel;
 
 import javax.swing.JPanel;
@@ -30,6 +31,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private Iterator<Cadrado> iterator3;
     public int contadorScore = 0;
     int multiplicadorScore = 1;
+    long clipTimePosition;
+    public static Clip cliper;
 
     /**
      * Creates new form VentanaPrincipalFrame
@@ -50,10 +53,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         levels = new javax.swing.JFrame();
+        jPanel3 = new javax.swing.JPanel();
         labelTituloLevel = new javax.swing.JLabel();
         easyButton = new javax.swing.JButton();
-        hardButton = new javax.swing.JButton();
         normalButton = new javax.swing.JButton();
+        hardButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         frameJuego = new javax.swing.JFrame();
         panelJuego = new javax.swing.JPanel();
         scoreLabel = new javax.swing.JLabel();
@@ -61,17 +66,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         levelLabel = new javax.swing.JLabel();
         level = new javax.swing.JLabel();
         pauseButton = new javax.swing.JToggleButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         exitButton = new javax.swing.JButton();
         playButton = new javax.swing.JButton();
         settingsButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        jButton1 = new javax.swing.JButton();
         labelTituloTetris = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
+        levels.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        labelTituloLevel.setBackground(new java.awt.Color(255, 255, 255));
         labelTituloLevel.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        labelTituloLevel.setForeground(new java.awt.Color(255, 255, 255));
         labelTituloLevel.setText("SELECT DIFFICULTY");
+        jPanel3.add(labelTituloLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 270, -1));
 
         easyButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        easyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Imagenes/Easy.png"))); // NOI18N
         easyButton.setContentAreaFilled(false);
         easyButton.setSelected(true);
         easyButton.addActionListener(new java.awt.event.ActionListener() {
@@ -79,55 +97,32 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 easyButtonActionPerformed(evt);
             }
         });
-
-        hardButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        hardButton.setContentAreaFilled(false);
-        hardButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hardButtonActionPerformed(evt);
-            }
-        });
+        jPanel3.add(easyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, -1));
 
         normalButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        normalButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Imagenes/Mid.png"))); // NOI18N
         normalButton.setContentAreaFilled(false);
         normalButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 normalButtonActionPerformed(evt);
             }
         });
+        jPanel3.add(normalButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, -1));
 
-        javax.swing.GroupLayout levelsLayout = new javax.swing.GroupLayout(levels.getContentPane());
-        levels.getContentPane().setLayout(levelsLayout);
-        levelsLayout.setHorizontalGroup(
-            levelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(levelsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(levelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hardButton)
-                    .addComponent(easyButton)
-                    .addComponent(normalButton))
-                .addGap(70, 70, 70))
-            .addGroup(levelsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelTituloLevel)
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
+        hardButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        hardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Imagenes/Hard.png"))); // NOI18N
+        hardButton.setContentAreaFilled(false);
+        hardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hardButtonActionPerformed(evt);
+            }
+        });
+        jPanel3.add(hardButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, -1));
 
-        levelsLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {easyButton, hardButton, normalButton});
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Imagenes/fondo.jpg"))); // NOI18N
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, -1));
 
-        levelsLayout.setVerticalGroup(
-            levelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(levelsLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(labelTituloLevel)
-                .addGap(30, 30, 30)
-                .addComponent(easyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(normalButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(hardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
-        );
+        levels.getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 340));
 
         frameJuego.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         frameJuego.setTitle("Tetris");
@@ -152,20 +147,28 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelJuego.setLayout(null);
         frameJuego.getContentPane().add(panelJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 400, 800));
 
+        scoreLabel.setBackground(new java.awt.Color(255, 255, 255));
         scoreLabel.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
+        scoreLabel.setForeground(new java.awt.Color(255, 255, 255));
         scoreLabel.setText("Score:");
         frameJuego.getContentPane().add(scoreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 24, -1, -1));
 
+        score.setBackground(new java.awt.Color(255, 255, 255));
         score.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
+        score.setForeground(new java.awt.Color(255, 255, 255));
         score.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         score.setText("0");
         frameJuego.getContentPane().add(score, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 94, 150, -1));
 
+        levelLabel.setBackground(new java.awt.Color(255, 255, 255));
         levelLabel.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
+        levelLabel.setForeground(new java.awt.Color(255, 255, 255));
         levelLabel.setText("Level:");
         frameJuego.getContentPane().add(levelLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 191, -1, -1));
 
+        level.setBackground(new java.awt.Color(255, 255, 255));
         level.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
+        level.setForeground(new java.awt.Color(255, 255, 255));
         level.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level.setText("1");
         frameJuego.getContentPane().add(level, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 261, 150, -1));
@@ -179,10 +182,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         frameJuego.getContentPane().add(pauseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 601, -1, -1));
 
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Imagenes/fondo.jpg"))); // NOI18N
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, -1));
+
+        frameJuego.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 810));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tetris");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setForeground(new java.awt.Color(102, 102, 102));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         exitButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
         exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Imagenes/EXIT_STOPPED.png"))); // NOI18N
@@ -199,6 +212,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 exitButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, 151, -1));
 
         playButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
         playButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Imagenes/PLAY_STOPPED.png"))); // NOI18N
@@ -209,6 +223,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 playButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(playButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 151, 107));
 
         settingsButton.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
         settingsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Imagenes/Levels-1.png.png"))); // NOI18N
@@ -219,62 +234,33 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 settingsButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(settingsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 151, 107));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 50, 10));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, 50, 10));
 
-        labelTituloTetris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Imagenes/The_Tetris_Company_logo.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Imagenes/sound.png"))); // NOI18N
+        jButton1.setFocusable(false);
+        jButton1.setSelected(true);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 70, 70));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(settingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(playButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(labelTituloTetris, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 14, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(176, 176, 176))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(176, 176, 176)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        labelTituloTetris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Imagenes/tetris.png"))); // NOI18N
+        jPanel1.add(labelTituloTetris, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 320, -1));
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {exitButton, playButton, settingsButton});
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Imagenes/fondo.jpg"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 550, 680));
 
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(labelTituloTetris)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(playButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(settingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(exitButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {exitButton, playButton, settingsButton});
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
@@ -347,6 +333,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_frameJuegoKeyPressed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        if (jButton1.isSelected()) {
+            clipTimePosition = cliper.getMicrosecondPosition();
+            cliper.stop();
+        } else {
+            cliper.setMicrosecondPosition(clipTimePosition);
+            cliper.start();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -386,13 +383,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                String musicPath = "src\\Resources\\Musica\\menu.wav";
                 new VentanaPrincipal().setVisible(true);
+                playMenuMusic(musicPath);
             }
         });
     }
 
     private void iniciarPartida() {
-
         this.setVisible(false);              //ESCONDE EL FRAME DE LA VENTANA PRINCIPAL
         frameJuego.setVisible(true);        // MUESTRA EL FRAME DEL JUEGO 
         frameJuego.setFocusable(true);
@@ -404,6 +402,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         timer.start();
 //         System.out.println(panelJuego.getHeight()); 
 //        System.out.println(panelJuego.getWidth());
+    }
+
+    public static void playMenuMusic(String musicLocation) {
+        try {
+            File musicPath = new File(musicLocation);
+            if (musicPath.exists()) {
+                AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
+                cliper = AudioSystem.getClip();
+                cliper.open(audioInput);
+                cliper.start();
+                cliper.loop(Clip.LOOP_CONTINUOUSLY);
+            } else {
+                System.out.println("No se encontró el archivo");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public void movimientoCaida() {
@@ -418,10 +433,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     public void aumentarScore() {
         boolean gameOver = false;
-        
+
         do {
-            score.setText(String.valueOf((++contadorScore)* multiplicadorScore));
-            
+            score.setText(String.valueOf((++contadorScore) * multiplicadorScore));
+
         } while (gameOver = false);
 
 //            
@@ -448,7 +463,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     public void setPanelJuego(JPanel panelJuego) {
         this.panelJuego = panelJuego;
-       
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -456,6 +471,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton exitButton;
     private javax.swing.JFrame frameJuego;
     private javax.swing.JButton hardButton;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel labelTituloLevel;
