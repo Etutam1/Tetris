@@ -14,6 +14,7 @@ import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.*;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import javax.swing.JPanel;
@@ -29,6 +30,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public Timer timer;
     public Xogo xogo;
     private Iterator<Cadrado> iterator3;
+    int contadorMusica = 0;
     public int contadorScore = 0;
     int multiplicadorScore = 1;
     long clipTimePosition;
@@ -241,7 +243,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Imagenes/sound.png"))); // NOI18N
         jButton1.setFocusable(false);
-        jButton1.setSelected(true);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -338,12 +339,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_frameJuegoKeyPressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        if (jButton1.isSelected()) {
+        contadorMusica++;
+        if (contadorMusica == 1) {
+            jButton1.setIcon(new ImageIcon(("src\\Resources\\Imagenes\\mute.png")));
             clipTimePosition = cliper.getMicrosecondPosition();
             cliper.stop();
+            System.out.println(clipTimePosition);
         } else {
+            contadorMusica = 0;
             cliper.setMicrosecondPosition(clipTimePosition);
+            jButton1.setIcon(new ImageIcon(("src\\Resources\\Imagenes\\sound.png")));
             cliper.start();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
