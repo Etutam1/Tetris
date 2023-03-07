@@ -4,15 +4,10 @@
  */
 package PaqueteIU;
 
-import PaqueteModelo.Cadrado;
 import PaqueteModelo.Xogo;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import java.awt.event.KeyEvent;
-import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JLabel;
 
 import javax.swing.JPanel;
@@ -25,13 +20,12 @@ import javax.swing.Timer;
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     //ATRIBUTOS
-   public Timer timer;
+    public Timer timer;
     public Timer timerScore;
     public Timer timerNumLineas;
     public Xogo xogo;
     public int contadorScore = 0;
     public int multiplicadorScore = 1;
-    boolean gameOver = false;
 
     /**
      * Creates new form VentanaPrincipalFrame
@@ -169,7 +163,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         level.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
         level.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        level.setText("1");
+        level.setText("0");
         frameJuego.getContentPane().add(level, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 261, 150, -1));
 
         pauseButton.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
@@ -308,7 +302,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void pauseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pauseButtonActionPerformed
 
-         if (pauseButton.isSelected()) {
+        if (pauseButton.isSelected()) {
             timer.stop();
             timerScore.stop();
             xogo.timerComprobarLineas.stop();
@@ -329,32 +323,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void frameJuegoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_frameJuegoKeyPressed
 
-         if (!xogo.pausa) {
+        if (!xogo.pausa) {
 
             if (KeyEvent.getKeyText(evt.getKeyCode()).equals("A")) {
-//                System.out.println("A");
                 xogo.moverFichaEsquerda();
             }
             if (KeyEvent.getKeyText(evt.getKeyCode()).equals("D")) {
-//                System.out.println("D");
                 xogo.moverFichaDereita();
             }
             if (KeyEvent.getKeyText(evt.getKeyCode()).equals("S")) {
-//                System.out.println("S");
                 xogo.moverFichaAbaixo();
                 this.actualizarPanel();
             }
             if (KeyEvent.getKeyText(evt.getKeyCode()).equals("W")) {
-//                System.out.println("PULSADA W");
-
-//                System.out.println("POSICION: " + xogo.fichaActual.posicion);
                 xogo.fichaActual.posicion++;
                 xogo.RotarFicha();
             }
         }
-
-
-
     }//GEN-LAST:event_frameJuegoKeyPressed
 
     /**
@@ -403,7 +388,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void iniciarPartida() {
 
-       this.setVisible(false);
+        this.setVisible(false);
         this.setLocationRelativeTo(null);
         frameJuego.setVisible(true);
         frameJuego.setFocusable(true);
@@ -417,6 +402,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         xogo.timerComprobarLineas.start();
         this.aumentarScore();
         timerScore.start();
+
     }
 
     public void movimientoCaida() {
@@ -429,13 +415,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     public void aumentarScore() {
-         this.timerScore = new Timer(500, (ActionEvent e) -> {
-            
-                score.setText(String.valueOf(contadorScore++));
-                if (contadorScore == 20) {
-                    timerScore.setDelay(timerScore.getDelay() / 2);
-                
-            } 
+        this.timerScore = new Timer(500, (ActionEvent e) -> {
+
+            score.setText(String.valueOf(contadorScore++));
+            if (contadorScore == 20) {
+                timerScore.setDelay(timerScore.getDelay() / 2);
+            }
         });
     }
 
@@ -444,15 +429,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     public void pintarCadrado(JLabel lblCadrado) {
-        this.panelJuego.add(lblCadrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(lblCadrado.getX(), lblCadrado.getY(), -1, -1)); //PINTA LA LABEL ASOCIADA A CADA OBJETO CUADRADO EN EL PANEL DEL JUEGO
+        this.panelJuego.add(lblCadrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(lblCadrado.getX(), lblCadrado.getY(), -1, -1));
 
     }
 
     public void borrarCadrado(JLabel lblCadrado) {
         this.panelJuego.remove(lblCadrado);
     }
-    
-    public void mostrarNumeroLineas(int numeroLineas){
+
+    public void mostrarNumeroLineas(int numeroLineas) {
         this.getLevel().setText(String.valueOf(numeroLineas));
     }
 
@@ -462,10 +447,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     public void setPanelJuego(JPanel panelJuego) {
         this.panelJuego = panelJuego;
-       
+
     }
-    
-     public JLabel getLevel() {
+
+    public JLabel getLevel() {
         return level;
     }
 

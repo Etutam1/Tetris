@@ -6,7 +6,6 @@ package PaqueteModelo;
 
 import PaqueteIU.VentanaPrincipal;
 import java.awt.event.ActionEvent;
-import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
@@ -31,10 +30,12 @@ public class Xogo {
     public Ficha fichaActual;
     public ArrayList<Cadrado> cadradosChan = new ArrayList<>();
     public ArrayList<Cadrado> cadradosBorrar = new ArrayList<>();
-    private Iterator<Cadrado> iterator;
-    private Iterator<Cadrado> iteratorChan;
-    private Iterator<Cadrado> iteratorBorrar;
+    public Iterator<Cadrado> iterator;
+    public Iterator<Cadrado> iteratorChan;
+    public Iterator<Cadrado> iteratorBorrar;
     public Timer timerComprobarLineas;
+    public int level = 0;
+    public boolean gameOver = false;
 
     //CONSTRUCTOR
     public Xogo(boolean pausa, VentanaPrincipal ventanaPrincipal) {
@@ -68,7 +69,9 @@ public class Xogo {
 
         if (chocaFichaCoChan()) {
             System.out.println("\n" + "TOCO CHAN");
+
             this.engadirFichaAoChan();
+            System.out.println("CADRADOSCHAN " + cadradosChan.size());
             xenerarNovaFicha();
         } else {
             fichaActual.moverAbaixo();
@@ -77,7 +80,7 @@ public class Xogo {
     }
 
     public void moverFichaDereita() {
-         iterator = fichaActual.cadrados.iterator();
+        iterator = fichaActual.cadrados.iterator();
         boolean podeMover = true;
 
         while (iterator.hasNext()) {
@@ -126,34 +129,34 @@ public class Xogo {
             comprobante = numAleatorio;
         }
         if (numAleatorio == 2) {
-            fichaActual = new FichaCadrada(this);
-            comprobante = numAleatorio;
-        }
-        if (numAleatorio == 3) {
-            fichaActual = new FichaCadrada(this);
-            comprobante = numAleatorio;
-        }
-        if (numAleatorio == 4) {
-            fichaActual = new FichaCadrada(this);
-            comprobante = numAleatorio;
-        }
-        if (numAleatorio == 5) {
-            fichaActual = new FichaCadrada(this);
-            comprobante = numAleatorio;
-        }
-        if (numAleatorio == 6) {
             fichaActual = new FichaBarra(this);
             comprobante = numAleatorio;
         }
+        if (numAleatorio == 3) {
+            fichaActual = new FichaZ(this);
+            comprobante = numAleatorio;
+        }
+        if (numAleatorio == 4) {
+            fichaActual = new FichaZInversa(this);
+            comprobante = numAleatorio;
+        }
+        if (numAleatorio == 5) {
+            fichaActual = new FichaT(this);
+            comprobante = numAleatorio;
+        }
+        if (numAleatorio == 6) {
+            fichaActual = new FichaL(this);
+            comprobante = numAleatorio;
+        }
         if (numAleatorio == 7) {
-            fichaActual = new FichaCadrada(this);
+            fichaActual = new FichaLInversa(this);
             comprobante = numAleatorio;
         }
         pintarFicha();
     }
 
     public void pintarFicha() {
-       iterator = fichaActual.getCadrados().iterator();
+        iterator = fichaActual.getCadrados().iterator();
 
         while (iterator.hasNext()) {
 
@@ -174,7 +177,7 @@ public class Xogo {
         return tocaChan;
     }
 
-     public void engadirFichaAoChan() {
+    public void engadirFichaAoChan() {
         cadradosChan.addAll(fichaActual.cadrados);
 
     }
@@ -182,7 +185,7 @@ public class Xogo {
     public void borrarLinasCompletas() throws ConcurrentModificationException {
 
         for (int y = this.MAX_Y - Xogo.LADO_CADRADO; y >= this.MIN_Y; y -= Xogo.LADO_CADRADO) {
-            iteratorChan = cadradosChan.iterator();
+            iteratorChan = cadradosChan.listIterator();
             int contadorCadrados = 0;
             System.out.println("y: " + y);
 
@@ -192,50 +195,58 @@ public class Xogo {
                 if (cadradoChan.lblCadrado.getY() == y) {
                     contadorCadrados++;
                     System.out.println("contadorCadrados: " + contadorCadrados);
+                    
                     if (contadorCadrados == 10) {
                         this.borrarLina(y);
-                        moverCadradosChan();
-                        this.ventanaPrincipal.pintarCadrado(cadradoChan.lblCadrado);
+                        sumarNumeroLineas();
+                        moverCadradosChan(y);
                     }
                 }
             }
         }
     }
-     public void sumarNumeroLineas() {
+
+    public void sumarNumeroLineas() {
         numeroLineas++;
 
     }
-   public void borrarLina(int linea) {
+
+    public void borrarLina(int linea) {
 
         System.out.println("NUM LINEAS " + this.numeroLineas);
-        iteratorChan = cadradosChan.iterator();
+        iteratorChan = cadradosChan.listIterator();
 
         while (iteratorChan.hasNext()) {
             Cadrado cadradoBorrar = iteratorChan.next();
             if (cadradoBorrar.getLblCadrado().getY() == linea) {
+                cadradosBorrar.add(cadradoBorrar);
                 this.ventanaPrincipal.borrarCadrado(cadradoBorrar.lblCadrado);
-                cadradosChan.remove(cadradoBorrar);
             }
         }
         
-        this.ventanaPrincipal.actualizarPanel();
+        cadradosChan.removeAll(cadradosBorrar);     
     }
-   
-    public void moverCadradosChan() {
+
+    public void moverCadradosChan(int linea ) {
 
         iteratorChan = cadradosChan.iterator();
         while (iteratorChan.hasNext()) {
-
+            
             Cadrado cadradoABaixar = iteratorChan.next();
-
+            if(cadradoABaixar.getY() < linea)
             cadradoABaixar.getLblCadrado().setLocation(cadradoABaixar.getLblCadrado().getX(), cadradoABaixar.getLblCadrado().getY() + Xogo.LADO_CADRADO);
         }
     }
-    
-     public void comprobarLineasCompletas() {
+
+    public void comprobarLineasCompletas() {
         this.timerComprobarLineas = new Timer(100, (ActionEvent e) -> {
-                 this.borrarLinasCompletas();   
-                 ventanaPrincipal.mostrarNumeroLineas(this.numeroLineas);
+            ventanaPrincipal.mostrarNumeroLineas(this.numeroLineas);
+            try {
+                borrarLinasCompletas();              
+            } catch (ConcurrentModificationException ex) {
+
+                System.out.println("SE ESTÁ MODIFICANDO MIENTRAS SE ITERA EN LA LISTA");
+            }
         });
     }
 
