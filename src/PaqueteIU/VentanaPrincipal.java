@@ -1,7 +1,7 @@
 package PaqueteIU;
 
-import PaqueteModelo.Cadrado;
 import PaqueteModelo.Xogo;
+import PaqueteModelo.Cadrado;
 import java.awt.event.ActionEvent;
 
 import java.awt.event.KeyEvent;
@@ -24,6 +24,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     //ATRIBUTOS
     public Timer timer;
+    public Timer timerScore;
+    public Timer timerNumLineas;
     public Xogo xogo;
     private Iterator<Cadrado> iterator3;
     int contadorMusica = 0;
@@ -264,15 +266,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_exitButtonActionPerformed
 
-    private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
-
-        this.iniciarPartida();
-        cliper.stop();
-        String musicPath = "src\\Resources\\Musica\\juego.wav";
-        playMenuMusic(musicPath);
-
-    }//GEN-LAST:event_playButtonActionPerformed
-
     private void settingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButtonActionPerformed
         levels.setVisible(rootPaneCheckingEnabled);
         levels.setSize(260, 340);
@@ -297,10 +290,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void pauseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pauseButtonActionPerformed
 
         if (pauseButton.isSelected()) {
+            clipTimePosition = cliper.getMicrosecondPosition();
+            cliper.stop();
             timer.stop();
+            timerScore.stop();
+            xogo.timerComprobarLineas.stop();
             xogo.pausa = true;
         } else {
+            cliper.setMicrosecondPosition(clipTimePosition);
+            cliper.start();
+            pauseButton.setFocusable(false);
             timer.start();
+            timerScore.start();
+            xogo.timerComprobarLineas.start();
             xogo.pausa = false;
         }
 
@@ -352,15 +354,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
+
+        this.iniciarPartida();
+    }//GEN-LAST:event_playButtonActionPerformed
+
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -385,10 +384,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(VentanaPrincipal.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 String musicPath = "src\\Resources\\Musica\\menu.wav";
@@ -399,17 +394,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     private void iniciarPartida() {
-        this.setVisible(false);              //ESCONDE EL FRAME DE LA VENTANA PRINCIPAL
-        frameJuego.setVisible(true);        // MUESTRA EL FRAME DEL JUEGO 
+        cliper.stop();
+        String musicPath = "src\\Resources\\Musica\\juego.wav";
+        playMenuMusic(musicPath);
+        this.setVisible(false);
+        this.setLocationRelativeTo(null);
+        frameJuego.setVisible(true);
         frameJuego.setFocusable(true);
         panelJuego.setFocusable(true);
         frameJuego.setLocationRelativeTo(this.rootPane);
-        xogo = new Xogo(false, 0, this);
+        xogo = new Xogo(false, this);
         xogo.xenerarNovaFicha();
-        movimientoCaida();
+        this.movimientoCaida();
         timer.start();
-//         System.out.println(panelJuego.getHeight()); 
-//        System.out.println(panelJuego.getWidth());
+        xogo.comprobarLineasCompletas();
+        xogo.timerComprobarLineas.start();
+        this.aumentarScore();
+        timerScore.start();
     }
 
     public static void playMenuMusic(String musicLocation) {
@@ -440,16 +441,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     public void aumentarScore() {
-        boolean gameOver = false;
+        this.timerScore = new Timer(500, (ActionEvent e) -> {
 
-        do {
-            score.setText(String.valueOf((++contadorScore) * multiplicadorScore));
-
-        } while (gameOver = false);
-
-//            
-//
-//            }
+            score.setText(String.valueOf(contadorScore++));
+            if (contadorScore == 20) {
+                timerScore.setDelay(timerScore.getDelay() / 2);
+            }
+        });
     }
 
     public void actualizarPanel() {
@@ -461,8 +459,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     }
 
-    public void borrarCadrado() {
+    public void borrarCadrado(JLabel lblCadrado) {
+        this.panelJuego.remove(lblCadrado);
+    }
 
+    public void mostrarNumeroLineas(int numeroLineas) {
+        this.getLevel().setText(String.valueOf(numeroLineas));
     }
 
     public JPanel getPanelJuego() {
@@ -472,6 +474,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public void setPanelJuego(JPanel panelJuego) {
         this.panelJuego = panelJuego;
 
+    }
+
+    public JLabel getLevel() {
+        return level;
+    }
+
+    public void setLevel(JLabel level) {
+        this.level = level;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
