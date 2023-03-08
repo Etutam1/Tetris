@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package PaqueteIU;
 
 import PaqueteModelo.Cadrado;
@@ -271,6 +267,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
 
         this.iniciarPartida();
+        cliper.stop();
+        String musicPath = "src\\Resources\\Musica\\juego.wav";
+        playMenuMusic(musicPath);
 
     }//GEN-LAST:event_playButtonActionPerformed
 
